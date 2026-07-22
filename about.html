@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Methods · Coffee Pantry</title>
+  <title>About · Coffee Pantry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -24,23 +24,13 @@
   </header>
 
   <main>
-    <h1>Methods</h1>
-    <p class="page-intro">Brewing methods tried at home.</p>
-    <div class="card-grid" id="methods-list"></div>
+    <h1>About</h1>
+    <div id="about-text">
+      <p class="empty-state">Bio coming soon.</p>
+    </div>
   </main>
 
   <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
   <script src="js/main.js"></script>
-  <script>
-    loadAndRender("data/methods.json", "methods-list", (item) => `
-      <article class="card">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
-        <h3>${item.name}</h3>
-        ${item.description ? `<p>${item.description}</p>` : ""}
-        ${item.recipe ? `<p class="card-meta">Recipe: ${item.recipe}</p>` : ""}
-        ${item.notes ? `<p>${item.notes}</p>` : ""}
-      </article>
-    `);
-  </script>
 </body>
 </html>
