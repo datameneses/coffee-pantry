@@ -1,0 +1,144 @@
+:root {
+  --color-bg: #FBF3E7;
+  --color-bg-card: #FFFDF9;
+  --color-text: #3B2A20;
+  --color-text-soft: #6B5849;
+  --color-accent: #C1552C;
+  --color-accent-soft: #E8C9B4;
+  --color-secondary: #7C7A4A;
+  --color-border: #E4D5C1;
+
+  --font-heading: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  margin: 0 0 0.5em;
+}
+
+a {
+  color: var(--color-accent);
+}
+
+header.site-header {
+  background: var(--color-text);
+  padding: 1.25rem 2rem;
+}
+
+.site-header .brand {
+  font-family: var(--font-heading);
+  color: var(--color-bg);
+  font-size: 1.4rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 0.75rem;
+}
+
+nav.site-nav a {
+  color: var(--color-bg);
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+}
+
+nav.site-nav a:hover,
+nav.site-nav a.active {
+  border-bottom-color: var(--color-accent);
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+}
+
+.page-intro {
+  margin-bottom: 2rem;
+  color: var(--color-text-soft);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+}
+
+.card-meta {
+  color: var(--color-secondary);
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.empty-state {
+  color: var(--color-text-soft);
+  font-style: italic;
+}
+
+.home-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.home-links a {
+  display: block;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  transition: border-color 0.15s ease;
+}
+
+.home-links a:hover {
+  border-color: var(--color-accent);
+}
+
+footer.site-footer {
+  text-align: center;
+  color: var(--color-text-soft);
+  font-size: 0.85rem;
+  padding: 2rem 1rem;
+}

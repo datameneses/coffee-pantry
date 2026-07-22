@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social · Coffee Pantry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Coffee Pantry</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="equipment.html">Equipment</a>
+      <a href="methods.html">Methods</a>
+      <a href="beans.html">Beans</a>
+      <a href="cafes.html">Cafes</a>
+      <a href="social.html">Social</a>
+      <a href="references.html">References</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Social</h1>
+    <p class="page-intro">Coffee posts from Instagram and TikTok, embedded live (requires an internet connection to load).</p>
+    <div class="card-grid" id="social-list"></div>
+  </main>
+
+  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <script src="js/main.js"></script>
+  <script>
+    // Social embeds need the platform's embed.js to run *after* the blockquotes
+    // exist in the DOM, so this page fetches + renders manually instead of using
+    // the generic loadAndRender helper, then loads each embed script afterward.
+    fetch("data/social.json")
+      .then((res) => res.json())
+      .then((items) => {
+        const container = document.getElementById("social-list");
+        if (!items.length) {
+          container.innerHTML = '<p class="empty-state">Nothing here yet.</p>';
+          return;
+        }
+        container.innerHTML = items
+          .map((item) => {
+            if (item.platform === "instagram") {
+              return `<div class="card"><blockquote class="instagram-media" data-instgrm-permalink="${item.url}"></blockquote></div>`;
+            }
+            if (item.platform === "tiktok") {
+              return `<div class="card"><blockquote class="tiktok-embed" cite="${item.url}"><section></section></blockquote></div>`;
+            }
+            return "";
+          })
+          .join("");
+
+        const needsInstagram = items.some((i) => i.platform === "instagram");
+        const needsTiktok = items.some((i) => i.platform === "tiktok");
+        if (needsInstagram) {
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.instagram.com/embed.js";
+          document.body.appendChild(s);
+        }
+        if (needsTiktok) {
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.tiktok.com/embed.js";
+          document.body.appendChild(s);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load social.json", err);
+        document.getElementById("social-list").innerHTML =
+          '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
+      });
+  </script>
+</body>
+</html>

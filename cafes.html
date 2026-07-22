@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cafes · Coffee Pantry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html">Coffee Pantry</a>
+    <nav class="site-nav">
+      <a href="index.html">Home</a>
+      <a href="equipment.html">Equipment</a>
+      <a href="methods.html">Methods</a>
+      <a href="beans.html">Beans</a>
+      <a href="cafes.html">Cafes</a>
+      <a href="social.html">Social</a>
+      <a href="references.html">References</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Cafes</h1>
+    <p class="page-intro">Cafes visited.</p>
+    <div class="card-grid" id="cafes-list"></div>
+  </main>
+
+  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <script src="js/main.js"></script>
+  <script>
+    loadAndRender("data/cafes.json", "cafes-list", (item) => `
+      <article class="card">
+        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+        <h3>${item.name}</h3>
+        <p class="card-meta">${item.location || ""}</p>
+        ${item.dateVisited ? `<p class="card-meta">Visited: ${item.dateVisited}</p>` : ""}
+        ${item.rating ? `<p class="card-meta">Rating: ${item.rating}</p>` : ""}
+        ${item.notes ? `<p>${item.notes}</p>` : ""}
+      </article>
+    `);
+  </script>
+</body>
+</html>
