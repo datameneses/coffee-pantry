@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "name": "De Mello Coffee - The Well",
+    "location": "8 Spadina Ave., Toronto",
+    "lat": 43.6429832,
+    "lng": -79.3945268
+  },
+  {
+    "name": "De Mello Coffee",
+    "location": "2389 Yonge St, Toronto",
+    "lat": 43.7098404,
+    "lng": -79.3988283
+  }
+]

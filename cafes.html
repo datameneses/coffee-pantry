@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 <body>
   <header class="site-header">
@@ -27,22 +28,76 @@
   <main>
     <h1>Cafes</h1>
     <p class="page-intro">Cafes visited.</p>
+    <div class="cafes-map" id="cafes-map"></div>
     <div class="card-grid" id="cafes-list"></div>
   </main>
 
   <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-    loadAndRender("data/cafes.json", "cafes-list", (item) => `
-      <article class="card">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
-        <h3>${item.name}</h3>
-        <p class="card-meta">${item.location || ""}</p>
-        ${item.dateVisited ? `<p class="card-meta">Visited: ${item.dateVisited}</p>` : ""}
-        ${item.rating ? `<p class="card-meta">Rating: ${item.rating}</p>` : ""}
-        ${item.notes ? `<p>${item.notes}</p>` : ""}
-      </article>
-    `);
+    function googleMapsUrl(item) {
+      const query = encodeURIComponent(item.location ? `${item.name}, ${item.location}` : item.name);
+      return `https://www.google.com/maps/search/?api=1&query=${query}`;
+    }
+
+    function cafeTemplate(item) {
+      return `
+        <article class="card">
+          ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+          <h3>${item.name}</h3>
+          <p class="card-meta">${item.location || ""}</p>
+          ${item.dateVisited ? `<p class="card-meta">Visited: ${item.dateVisited}</p>` : ""}
+          ${item.rating ? `<p class="card-meta">Rating: ${item.rating}</p>` : ""}
+          ${item.notes ? `<p>${item.notes}</p>` : ""}
+          <p class="card-meta"><a href="${googleMapsUrl(item)}" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </article>
+      `;
+    }
+
+    function renderMap(cafes) {
+      const mapEl = document.getElementById("cafes-map");
+      const pinned = cafes.filter((c) => typeof c.lat === "number" && typeof c.lng === "number");
+
+      if (!pinned.length) {
+        mapEl.outerHTML = '<p class="empty-state">No cafes pinned yet.</p>';
+        return;
+      }
+
+      const map = L.map(mapEl);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      pinned.forEach((c) => {
+        L.marker([c.lat, c.lng]).addTo(map).bindPopup(
+          `<strong>${c.name}</strong><br>${c.location || ""}<br><a href="${googleMapsUrl(c)}" target="_blank" rel="noopener">Open in Google Maps</a>`
+        );
+      });
+
+      if (pinned.length === 1) {
+        map.setView([pinned[0].lat, pinned[0].lng], 15);
+      } else {
+        map.fitBounds(L.latLngBounds(pinned.map((c) => [c.lat, c.lng])), { padding: [30, 30] });
+      }
+    }
+
+    fetch("data/cafes.json")
+      .then((res) => res.json())
+      .then((cafes) => {
+        renderMap(cafes);
+
+        const list = document.getElementById("cafes-list");
+        list.innerHTML = cafes.length
+          ? cafes.map(cafeTemplate).join("")
+          : '<p class="empty-state">Nothing here yet.</p>';
+      })
+      .catch((err) => {
+        console.error("Failed to load data/cafes.json", err);
+        document.getElementById("cafes-list").innerHTML =
+          '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
+      });
   </script>
 </body>
 </html>
