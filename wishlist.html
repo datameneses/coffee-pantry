@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About · Coffee Pantry</title>
+  <title>Wishlist · Coffee Pantry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -11,12 +11,13 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="equipment.html">Equipment</a>
       <a href="methods.html">Methods</a>
       <a href="beans.html">Beans</a>
+      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
@@ -24,13 +25,22 @@
   </header>
 
   <main>
-    <h1>About</h1>
-    <div id="about-text">
-      <p class="empty-state">Bio coming soon.</p>
-    </div>
+    <h1>Wishlist</h1>
+    <p class="page-intro">Beans I want to try next.</p>
+
+    <div class="wishlist-grid" id="wishlist-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
+  <script>
+    loadAndRender("data/wishlist.json", "wishlist-list", (item) => {
+      const label = [item.roaster, item.name].filter(Boolean).join(": ");
+      const content = item.url
+        ? `<a href="${item.url}" target="_blank" rel="noopener">${label}</a>`
+        : label;
+      return `<article class="card wishlist-card">${content}</article>`;
+    });
+  </script>
 </body>
 </html>

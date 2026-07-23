@@ -11,12 +11,13 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="equipment.html">Equipment</a>
       <a href="methods.html">Methods</a>
       <a href="beans.html">Beans</a>
+      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
@@ -25,11 +26,11 @@
 
   <main>
     <h1>Social</h1>
-    <p class="page-intro">Coffee posts from Instagram and TikTok, embedded live (requires an internet connection to load).</p>
-    <div class="card-grid" id="social-list"></div>
+    <p class="page-intro">Coffee-related posts from social media.</p>
+    <div class="social-list" id="social-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
   <script>
     // Social embeds need the platform's embed.js to run *after* the blockquotes
@@ -46,10 +47,10 @@
         container.innerHTML = items
           .map((item) => {
             if (item.platform === "instagram") {
-              return `<div class="card"><blockquote class="instagram-media" data-instgrm-permalink="${item.url}"></blockquote></div>`;
+              return `<blockquote class="instagram-media" data-instgrm-permalink="${item.url}"></blockquote>`;
             }
             if (item.platform === "tiktok") {
-              return `<div class="card"><blockquote class="tiktok-embed" cite="${item.url}"><section></section></blockquote></div>`;
+              return `<blockquote class="tiktok-embed" cite="${item.url}"><section></section></blockquote>`;
             }
             return "";
           })
@@ -61,6 +62,15 @@
           const s = document.createElement("script");
           s.async = true;
           s.src = "https://www.instagram.com/embed.js";
+          s.onload = () => {
+            // embed.js sometimes misses a post on its first automatic pass when
+            // several embeds are on the same page, so re-run processing explicitly
+            // once the script has loaded, and once more after the DOM settles.
+            if (window.instgrm) window.instgrm.Embeds.process();
+            setTimeout(() => {
+              if (window.instgrm) window.instgrm.Embeds.process();
+            }, 1000);
+          };
           document.body.appendChild(s);
         }
         if (needsTiktok) {

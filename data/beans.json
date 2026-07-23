@@ -1,1 +1,218 @@
-[]
+[
+  {
+    "name": "Costa Rica La Pacaya Cinnamon",
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "productUrl": "https://hellodemello.com/products/costa-rica-la-pacaya-cinnamon",
+    "image": "images/beans/costa-rica-la-pacaya.jpg",
+    "origin": {
+      "country": "Costa Rica",
+      "region": "Tarrazú",
+      "producer": "Franciny Vargas, La Pacaya, Doga"
+    },
+    "varietal": "Red Catuai",
+    "altitude": "1700–1900 MASL (meters above sea level)",
+    "process": "Cinnamon Anaerobic (18-hour cherry rest, then 72 hours submerged with yeast, sugar, and cinnamon)",
+    "roast": "Medium-Light",
+    "caffeine": "Regular",
+    "tasteProfile": [
+      "Cinnamon Roll"
+    ],
+    "rest": "10–12 days",
+    "grinderSetting": "16 (espresso)",
+    "espressoRecommendation": "19.3g in → 40.5g out (1:2 ratio) in 23–25s",
+    "dripRecommendation": "20g coffee + 330ml water (1:16 ratio) at 93°C in 3 minutes"
+  },
+  {
+    "name": "Dancing Goats",
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "productUrl": "https://hellodemello.com/products/dancing-goats",
+    "image": "images/beans/dancing-goats.jpg",
+    "origin": {
+      "country": "Brazil",
+      "region": "Machado, Minas Gerais",
+      "producer": "Group of Sitios"
+    },
+    "varietal": "Yellow Catuai",
+    "altitude": "1200 MASL (meters above sea level)",
+    "process": "Natural",
+    "roast": "Medium",
+    "caffeine": "Regular",
+    "tasteProfile": [
+      "Milk chocolate",
+      "Vanilla",
+      "Dark cherry"
+    ],
+    "rest": "10–12 days",
+    "grinderSetting": "17 (espresso)",
+    "espressoRecommendation": "20g in → 39–41g out (1:1.9–2 ratio) in 28–30s",
+    "dripRecommendation": "20g coffee + 330ml water (1:16 ratio) at 94°C in 2 min 3s"
+  },
+  {
+    "name": "Deadman Walking",
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "productUrl": "https://hellodemello.com/products/deadman-walking",
+    "image": "images/beans/deadman-walking.jpg",
+    "origin": {
+      "country": "Brazil",
+      "region": "Poços de Caldas",
+      "producer": "Small holders"
+    },
+    "varietal": "Bourbon & Typica",
+    "altitude": "1200 MASL (meters above sea level)",
+    "process": "Natural",
+    "roast": "Dark",
+    "caffeine": "Regular",
+    "tasteProfile": [
+      "Full body",
+      "Smooth",
+      "Dark chocolate"
+    ],
+    "rest": "8–10 days",
+    "grinderSetting": "23 (espresso)",
+    "espressoRecommendation": "18.5g in → 47g out (1:2.5 ratio) in 23–25s",
+    "dripRecommendation": "18.5g coffee + 333ml water (1:18 ratio) at 91°C in 2 min 15s"
+  },
+  {
+    "name": "Gentleman",
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "productUrl": "https://hellodemello.com/products/gentleman",
+    "image": "images/beans/gentleman.jpg",
+    "origin": {
+      "country": "Brazil",
+      "region": "Poços de Caldas",
+      "producer": "Small holders"
+    },
+    "varietal": "Bourbon & Typica",
+    "altitude": "1200 MASL (meters above sea level)",
+    "process": "Natural",
+    "roast": "Medium-Dark",
+    "caffeine": "Regular",
+    "tasteProfile": [
+      "Rich",
+      "Smooth",
+      "Dark chocolate"
+    ],
+    "rest": "8–10 days",
+    "grinderSetting": "23 (espresso)",
+    "espressoRecommendation": "18.5g in → 47g out (1:2.5 ratio) in 23–25s",
+    "dripRecommendation": "19g coffee + 323ml water (1:17 ratio) at 91°C in 2 min 5s"
+  },
+  {
+    "name": "Dancing Goats Decaf (Mt. Water)",
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "productUrl": "https://hellodemello.com/products/mt-water",
+    "image": "images/beans/dancing-goats-decaf.jpg",
+    "origin": {
+      "country": "Brazil",
+      "region": "Machado, Poço Fundo and Campestre, Minas Gerais",
+      "producer": "Co-op Legender"
+    },
+    "varietal": "Arara, Catuai, Mundo Novo",
+    "altitude": "1100 MASL (meters above sea level)",
+    "process": "Mt. Water Process (chemical-free decaffeination using pure water and temperature control)",
+    "roast": "Medium",
+    "caffeine": "Decaf",
+    "tasteProfile": [
+      "Chocolate toffee",
+      "Vanilla custard",
+      "Pumpkin taffy"
+    ],
+    "rest": "7–10 days",
+    "grinderSetting": "17 (espresso)",
+    "espressoRecommendation": "20g in → 40g out (1:2 ratio) in 25–27s",
+    "dripRecommendation": "20g coffee + 280ml water (1:14 ratio) at 92°C in 2 min 35s"
+  },
+  {
+    "name": "Ethiopia Decaf (Swiss Water)",
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "productUrl": "https://hellodemello.com/products/swiss-water",
+    "image": "images/beans/ethiopia-decaf.jpg",
+    "origin": {
+      "country": "Ethiopia",
+      "region": "Oromia, Guji Zone, Sidamo",
+      "producer": "Small holders"
+    },
+    "varietal": "Mixed Heirloom",
+    "altitude": "2000 MASL (meters above sea level)",
+    "process": "Swiss Water Process (chemical-free decaffeination using water, carbon filtration, and time)",
+    "roast": "Medium",
+    "caffeine": "Decaf",
+    "tasteProfile": [
+      "Chestnut spread",
+      "Honey",
+      "Molasses"
+    ],
+    "rest": "10–13 days",
+    "espressoRecommendation": "20.2g in → 40g out (1:1.9 ratio) in 23–25s",
+    "dripRecommendation": "20g coffee + 270ml water (1:13 ratio) at 91°C in 2 min 55s"
+  },
+  {
+    "name": "Catalyst Blend Decaf",
+    "roaster": "Pilot Coffee Roasters",
+    "roasterUrl": "https://pilotcoffeeroasters.com/",
+    "productUrl": "https://pilotcoffeeroasters.com/products/catalyst-decaf-blend",
+    "image": "images/beans/catalyst-decaf.jpg",
+    "origin": {
+      "country": "Colombia",
+      "region": "Huila"
+    },
+    "process": "Natural E.A. (Ethyl Acetate) Process",
+    "roast": "Medium-Dark",
+    "caffeine": "Decaf",
+    "tasteProfile": [
+      "Milk chocolate",
+      "Brown sugar",
+      "Familiar"
+    ],
+    "grinderSetting": "15 (espresso)",
+    "espressoRecommendation": "20g in → 42ml out (1:2 ratio) in 27s",
+    "dripRecommendation": "20g coffee + 300ml water (1:15 ratio) in 3 min"
+  },
+  {
+    "name": "Catalan Natural Guatemala",
+    "roaster": "Pilot Coffee Roasters",
+    "roasterUrl": "https://pilotcoffeeroasters.com/",
+    "productUrl": "https://pilotcoffeeroasters.com/products/catalan-natural-guatemala",
+    "image": "images/beans/guatemala-catalan-natural.jpg",
+    "origin": {
+      "country": "Guatemala",
+      "region": "San Martín Jilotepeque, Chimaltenango",
+      "producer": "Nicholas Hammond, Catalan de Las Mercedes"
+    },
+    "varietal": "Bourbon",
+    "altitude": "1800–2200 MASL (meters above sea level)",
+    "process": "Natural",
+    "roast": "Light",
+    "caffeine": "Regular",
+    "tasteProfile": [
+      "Fruit punch",
+      "Gummy bear",
+      "Juicy"
+    ],
+    "rest": "7–10 days",
+    "grinderSetting": "16 (espresso)",
+    "espressoRecommendation": "20g in → 49g out (1:2.4 ratio) in 25s",
+    "dripRecommendation": "18g coffee + 288ml water (1:16 ratio) in 3 min 15s"
+  },
+  {
+    "name": "Huadquiña Espresso",
+    "roaster": "Pilot Coffee Roasters",
+    "roasterUrl": "https://pilotcoffeeroasters.com/",
+    "productUrl": "https://specialitycoffee.ca/products/pilot-coffee-roasters-huadquina-espresso-peru",
+    "image": "images/beans/huadquina-peru.png",
+    "origin": { "country": "Peru", "region": "Santa Teresa", "producer": "Huadquiña (co-op of 300 families)" },
+    "varietal": "Bourbon, Typica, Catimor",
+    "altitude": "1500–2200 MASL (meters above sea level)",
+    "process": "Washed",
+    "roast": "Dark",
+    "caffeine": "Regular",
+    "tasteProfile": ["Grapefruit", "Pear", "Honeysuckle"],
+    "grinderSetting": "16 (espresso)"
+  }
+]

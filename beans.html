@@ -11,12 +11,13 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="equipment.html">Equipment</a>
       <a href="methods.html">Methods</a>
       <a href="beans.html">Beans</a>
+      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
@@ -26,23 +27,285 @@
   <main>
     <h1>Beans</h1>
     <p class="page-intro">Coffee beans tried at home.</p>
-    <div class="card-grid" id="beans-list"></div>
+
+    <div class="dashboard" id="beans-dashboard"></div>
+
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">Sort by:</span>
+        <button class="toolbar-btn" data-sort="country" type="button">Country</button>
+        <button class="toolbar-btn" data-sort="roaster" type="button">Roaster</button>
+        <button class="toolbar-btn active" data-sort="roast" type="button">Roast</button>
+      </div>
+      <div class="toolbar-group">
+        <span class="toolbar-label">Filter:</span>
+        <select id="filter-country"><option value="">All countries</option></select>
+        <select id="filter-roaster"><option value="">All roasters</option></select>
+        <select id="filter-roast"><option value="">All roasts</option></select>
+        <select id="filter-caffeine">
+          <option value="">All types</option>
+          <option value="Regular">Regular</option>
+          <option value="Decaf">Decaf</option>
+        </select>
+        <button class="toolbar-btn" id="reset-filters" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="card-grid bean-grid" id="beans-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
   <script>
-    loadAndRender("data/beans.json", "beans-list", (item) => `
-      <article class="card">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
-        <h3>${item.name}</h3>
-        <p class="card-meta">${[item.roaster, item.origin].filter(Boolean).join(" · ")}</p>
-        ${item.roastDate ? `<p class="card-meta">Roast date: ${item.roastDate}</p>` : ""}
-        ${item.rating ? `<p class="card-meta">Rating: ${item.rating}</p>` : ""}
-        ${item.brewMethod ? `<p class="card-meta">Brewed with: ${item.brewMethod}</p>` : ""}
-        ${item.tastingNotes ? `<p>${item.tastingNotes}</p>` : ""}
-      </article>
-    `);
+    const ROAST_ORDER = ["Light", "Medium-Light", "Medium", "Medium-Dark", "Dark"];
+    const ROAST_COLORS = {
+      "Light": "#EAD3BE",
+      "Medium-Light": "#DDA579",
+      "Medium": "#C1552C",
+      "Medium-Dark": "#96401F",
+      "Dark": "#5C2712"
+    };
+
+    function roastRank(roast) {
+      const i = ROAST_ORDER.indexOf(roast);
+      return i === -1 ? ROAST_ORDER.length : i;
+    }
+
+    function countBy(data, keyFn) {
+      const counts = {};
+      data.forEach((item) => {
+        const key = keyFn(item);
+        if (!key) return;
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      return counts;
+    }
+
+    function renderHBarChart(title, counts) {
+      const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      const max = Math.max(...entries.map(([, v]) => v), 1);
+      const rows = entries
+        .map(([label, value]) => `
+          <div class="hbar-row" title="${label}: ${value} bean${value === 1 ? "" : "s"}">
+            <span class="hbar-label">${label}</span>
+            <div class="hbar-track"><div class="hbar-fill" style="width:${(value / max) * 100}%"></div></div>
+            <span class="hbar-value">${value}</span>
+          </div>
+        `)
+        .join("");
+      return `<div class="dashboard-card"><p class="dashboard-title">${title}</p>${rows}</div>`;
+    }
+
+    function renderRoastChart(counts) {
+      const max = Math.max(...ROAST_ORDER.map((r) => counts[r] || 0), 1);
+      const cols = ROAST_ORDER
+        .map((roast) => {
+          const value = counts[roast] || 0;
+          const heightPct = value ? (value / max) * 100 : 2;
+          return `
+            <div class="vbar-col" title="${roast}: ${value} bean${value === 1 ? "" : "s"}">
+              <div class="vbar-bar-area">
+                <span class="vbar-value">${value}</span>
+                <div class="vbar-fill" style="height:${heightPct}%; background:${ROAST_COLORS[roast]}"></div>
+              </div>
+              <span class="vbar-label">${roast}</span>
+            </div>
+          `;
+        })
+        .join("");
+      return `<div class="dashboard-card"><p class="dashboard-title">Beans by Roast</p><div class="vbar-chart">${cols}</div></div>`;
+    }
+
+    function renderDonutChart(counts) {
+      const order = ["Regular", "Decaf"];
+      const colors = { Regular: "var(--color-accent)", Decaf: "var(--color-secondary)" };
+      const total = order.reduce((sum, key) => sum + (counts[key] || 0), 0) || 1;
+      let cumulative = 0;
+      const segments = order
+        .map((key) => {
+          const value = counts[key] || 0;
+          const pct = (value / total) * 100;
+          const segment = `${colors[key]} ${cumulative}% ${cumulative + pct}%`;
+          cumulative += pct;
+          return segment;
+        })
+        .join(", ");
+      const legend = order
+        .map((key) => `<li><span class="swatch" style="background:${colors[key]}"></span>${key} (${counts[key] || 0})</li>`)
+        .join("");
+      return `
+        <div class="dashboard-card">
+          <p class="dashboard-title">Beans by Type</p>
+          <div class="donut-wrap">
+            <div class="donut" style="background: conic-gradient(${segments})" title="Regular: ${counts.Regular || 0}, Decaf: ${counts.Decaf || 0}">
+              <div class="donut-hole"><span>${total}</span><small>beans</small></div>
+            </div>
+            <ul class="donut-legend">${legend}</ul>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderDashboard(data) {
+      const byCountry = countBy(data, (b) => b.origin && b.origin.country);
+      const byRoaster = countBy(data, (b) => b.roaster);
+      const byRoast = countBy(data, (b) => b.roast);
+      const byType = countBy(data, (b) => b.caffeine);
+
+      document.getElementById("beans-dashboard").innerHTML =
+        renderHBarChart("Beans by Country", byCountry) +
+        renderHBarChart("Beans by Roaster", byRoaster) +
+        renderRoastChart(byRoast) +
+        renderDonutChart(byType);
+    }
+
+    function renderOrigin(origin) {
+      if (!origin) return "";
+      const countryLine = origin.country ? `<li><strong>Country:</strong> ${origin.country}</li>` : "";
+      const regionLine = origin.region ? `<li><strong>Region:</strong> ${origin.region}</li>` : "";
+      const producerLine = origin.producer ? `<li><strong>Producer:</strong> ${origin.producer}</li>` : "";
+      return countryLine + regionLine + producerLine;
+    }
+
+    function field(label, value) {
+      return value ? `<li><strong>${label}:</strong> ${value}</li>` : "";
+    }
+
+    function renderRoasterLink(item) {
+      const links = [];
+      if (item.roasterUrl) links.push(`<a href="${item.roasterUrl}" target="_blank" rel="noopener">${item.roaster}</a>`);
+      if (item.productUrl) links.push(`<a href="${item.productUrl}" target="_blank" rel="noopener">${item.name}</a>`);
+      return links.length ? `<p class="card-meta">Reference: ${links.join(" · ")}</p>` : "";
+    }
+
+    function beanTemplate(item) {
+      return `
+        <article class="card bean-card">
+          <div class="bean-image">
+            ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+          </div>
+          <div class="bean-separator"></div>
+          <div class="bean-details">
+            <h3>${[item.roaster, item.name].filter(Boolean).join(" - ")}</h3>
+            ${item.tasteProfile && item.tasteProfile.length ? `<p class="card-meta">${item.tasteProfile.join(" · ")}</p>` : ""}
+            <ul class="spec-list">
+              ${renderOrigin(item.origin)}
+              ${field("Altitude", item.altitude)}
+              ${field("Varietal", item.varietal)}
+              ${field("Process", item.process)}
+              ${field("Roast", item.roast)}
+              ${field("Rest", item.rest)}
+              ${field("Grinder setting", item.grinderSetting)}
+              ${field("Espresso", item.espressoRecommendation)}
+              ${field("Drip", item.dripRecommendation)}
+            </ul>
+            ${renderRoasterLink(item)}
+          </div>
+        </article>
+      `;
+    }
+
+    let beansData = [];
+    let currentSort = "roast";
+    let currentCountry = "";
+    let currentRoast = "";
+    let currentRoaster = "";
+    let currentCaffeine = "";
+
+    function applyAndRender() {
+      let list = beansData.slice();
+
+      if (currentCountry) list = list.filter((b) => b.origin && b.origin.country === currentCountry);
+      if (currentRoast) list = list.filter((b) => b.roast === currentRoast);
+      if (currentRoaster) list = list.filter((b) => b.roaster === currentRoaster);
+      if (currentCaffeine) list = list.filter((b) => b.caffeine === currentCaffeine);
+
+      if (currentSort === "country") {
+        list.sort((a, b) => (a.origin && a.origin.country || "").localeCompare(b.origin && b.origin.country || ""));
+      } else if (currentSort === "roast") {
+        list.sort((a, b) => roastRank(a.roast) - roastRank(b.roast));
+      } else if (currentSort === "roaster") {
+        list.sort((a, b) => (a.roaster || "").localeCompare(b.roaster || ""));
+      }
+
+      const container = document.getElementById("beans-list");
+      container.innerHTML = list.length
+        ? list.map(beanTemplate).join("")
+        : '<p class="empty-state">No beans match these filters.</p>';
+    }
+
+    function populateSelect(id, values) {
+      const select = document.getElementById(id);
+      values.forEach((v) => {
+        const opt = document.createElement("option");
+        opt.value = v;
+        opt.textContent = v;
+        select.appendChild(opt);
+      });
+    }
+
+    fetch("data/beans.json")
+      .then((res) => res.json())
+      .then((data) => {
+        beansData = data;
+
+        const countries = [...new Set(data.map((b) => b.origin && b.origin.country).filter(Boolean))].sort();
+        const roasters = [...new Set(data.map((b) => b.roaster).filter(Boolean))].sort();
+        const roastsPresent = ROAST_ORDER.filter((r) => data.some((b) => b.roast === r));
+
+        populateSelect("filter-country", countries);
+        populateSelect("filter-roast", roastsPresent);
+        populateSelect("filter-roaster", roasters);
+
+        renderDashboard(data);
+        applyAndRender();
+      })
+      .catch((err) => {
+        console.error("Failed to load data/beans.json", err);
+        document.getElementById("beans-list").innerHTML =
+          '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
+      });
+
+    document.querySelectorAll(".toolbar-btn[data-sort]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        currentSort = btn.dataset.sort;
+        document.querySelectorAll(".toolbar-btn[data-sort]").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        applyAndRender();
+      });
+    });
+
+    document.getElementById("filter-country").addEventListener("change", (e) => {
+      currentCountry = e.target.value;
+      applyAndRender();
+    });
+    document.getElementById("filter-roast").addEventListener("change", (e) => {
+      currentRoast = e.target.value;
+      applyAndRender();
+    });
+    document.getElementById("filter-roaster").addEventListener("change", (e) => {
+      currentRoaster = e.target.value;
+      applyAndRender();
+    });
+    document.getElementById("filter-caffeine").addEventListener("change", (e) => {
+      currentCaffeine = e.target.value;
+      applyAndRender();
+    });
+
+    document.getElementById("reset-filters").addEventListener("click", () => {
+      currentSort = "roast";
+      currentCountry = "";
+      currentRoast = "";
+      currentRoaster = "";
+      currentCaffeine = "";
+      document.getElementById("filter-country").value = "";
+      document.getElementById("filter-roast").value = "";
+      document.getElementById("filter-roaster").value = "";
+      document.getElementById("filter-caffeine").value = "";
+      document.querySelectorAll(".toolbar-btn[data-sort]").forEach((b) => b.classList.remove("active"));
+      document.querySelector('.toolbar-btn[data-sort="roast"]').classList.add("active");
+      applyAndRender();
+    });
   </script>
 </body>
 </html>

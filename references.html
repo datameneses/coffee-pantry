@@ -11,12 +11,13 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="equipment.html">Equipment</a>
       <a href="methods.html">Methods</a>
       <a href="beans.html">Beans</a>
+      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
@@ -29,14 +30,23 @@
     <div class="card-grid" id="references-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
   <script>
+    function renderBooks(books) {
+      if (!books || !books.length) return "";
+      const links = books
+        .map((b) => `<a href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`)
+        .join(" · ");
+      return `<p class="card-meta">Books: ${links}</p>`;
+    }
+
     loadAndRender("data/references.json", "references-list", (item) => `
       <article class="card">
         <h3>${item.name}</h3>
-        <p class="card-meta">${item.platform || ""}</p>
-        ${item.link ? `<p><a href="${item.link}" target="_blank" rel="noopener">${item.link}</a></p>` : ""}
+        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+        ${item.link ? `<p class="card-meta"><a href="${item.link}" target="_blank" rel="noopener">${item.platform || "Link"} channel</a></p>` : ""}
+        ${renderBooks(item.books)}
         ${item.why ? `<p>${item.why}</p>` : ""}
       </article>
     `);

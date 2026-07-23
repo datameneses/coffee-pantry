@@ -11,12 +11,13 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="equipment.html">Equipment</a>
       <a href="methods.html">Methods</a>
       <a href="beans.html">Beans</a>
+      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
@@ -26,21 +27,112 @@
   <main>
     <h1>Methods</h1>
     <p class="page-intro">Brewing methods tried at home.</p>
-    <div class="card-grid" id="methods-list"></div>
+
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">Filter:</span>
+        <select id="filter-method">
+          <option value="">All methods</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card-grid method-grid" id="methods-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
   <script>
-    loadAndRender("data/methods.json", "methods-list", (item) => `
-      <article class="card">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
-        <h3>${item.name}</h3>
-        ${item.description ? `<p>${item.description}</p>` : ""}
-        ${item.recipe ? `<p class="card-meta">Recipe: ${item.recipe}</p>` : ""}
-        ${item.notes ? `<p>${item.notes}</p>` : ""}
-      </article>
-    `);
+    function renderSteps(steps) {
+      if (!steps || !steps.length) return "";
+      const items = steps
+        .map((s, i) => {
+          const label = s.label.charAt(0).toUpperCase() + s.label.slice(1);
+          return `<div class="step"><strong>${i + 1}. ${label}:</strong> ${s.detail}</div>`;
+        })
+        .join("");
+      return `<div class="step-list">${items}</div>`;
+    }
+
+    function renderPourSchedule(schedule) {
+      if (!schedule || !schedule.length) return "";
+      const rows = schedule.map((row) => `<tr><td>${row.time}</td><td>${row.action}</td></tr>`).join("");
+      return `<p class="sub-heading">Pouring</p><table class="pour-table"><tbody>${rows}</tbody></table>`;
+    }
+
+    function renderRatioTable(ratios) {
+      if (!ratios || !ratios.length) return "";
+      const rows = ratios
+        .map((r) => `<tr><td>${r.style}</td><td>${r.ratio}</td><td>${r.example}</td></tr>`)
+        .join("");
+      return `<p class="sub-heading">Espresso ratios (dry:wet dose)</p><table class="pour-table"><thead><tr><th>Style</th><th>Ratio</th><th>Example (17g dose in)</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function renderDrinkGuide(drinks) {
+      if (!drinks || !drinks.length) return "";
+      const rows = drinks
+        .map((d) => `<tr><td>${d.drink}</td><td>${d.ratio}</td><td>${d.milkAt40ml}</td><td>${d.foam}</td></tr>`)
+        .join("");
+      return `<p class="sub-heading">Milk drinks guide</p><table class="pour-table"><thead><tr><th>Drink</th><th>Ratio (espresso:milk)</th><th>Milk (40ml espresso)</th><th>Foam</th></tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function renderSubList(title, items) {
+      if (!items || !items.length) return "";
+      const rows = items.map((i) => `<li>${i}</li>`).join("");
+      return `<p class="sub-heading">${title}</p><ul class="tip-list">${rows}</ul>`;
+    }
+
+    function methodTemplate(item) {
+      return `
+        <article class="card method-card">
+          ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
+          <h3>${item.name}</h3>
+          ${item.ratio ? `<p class="card-meta">Ratio: ${item.ratio}</p>` : ""}
+          ${renderSteps(item.steps)}
+          ${renderPourSchedule(item.pourSchedule)}
+          ${renderRatioTable(item.ratios)}
+          ${renderSubList("Tips", item.tips)}
+          ${renderSubList("Troubleshooting", item.troubleshooting)}
+          ${item.cleanup ? `<p class="card-meta">Cleanup: ${item.cleanup}</p>` : ""}
+          ${renderDrinkGuide(item.drinkGuide)}
+        </article>
+      `;
+    }
+
+    let methodsData = [];
+    let currentMethod = "";
+
+    function applyAndRender() {
+      const list = currentMethod ? methodsData.filter((m) => m.name === currentMethod) : methodsData;
+      const container = document.getElementById("methods-list");
+      container.innerHTML = list.length
+        ? list.map(methodTemplate).join("")
+        : '<p class="empty-state">No methods match this filter.</p>';
+    }
+
+    fetch("data/methods.json")
+      .then((res) => res.json())
+      .then((data) => {
+        methodsData = data;
+        const select = document.getElementById("filter-method");
+        data.forEach((m) => {
+          const opt = document.createElement("option");
+          opt.value = m.name;
+          opt.textContent = m.name;
+          select.appendChild(opt);
+        });
+        applyAndRender();
+      })
+      .catch((err) => {
+        console.error("Failed to load data/methods.json", err);
+        document.getElementById("methods-list").innerHTML =
+          '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
+      });
+
+    document.getElementById("filter-method").addEventListener("change", (e) => {
+      currentMethod = e.target.value;
+      applyAndRender();
+    });
   </script>
 </body>
 </html>

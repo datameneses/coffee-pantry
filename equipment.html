@@ -11,12 +11,13 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
       <a href="equipment.html">Equipment</a>
       <a href="methods.html">Methods</a>
       <a href="beans.html">Beans</a>
+      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
@@ -29,15 +30,26 @@
     <div class="card-grid" id="equipment-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry — a personal project, not hosted (yet).</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
   <script>
+    function renderSpecs(specs) {
+      if (!specs) return "";
+      const rows = Object.entries(specs)
+        .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
+        .join("");
+      return `<ul class="spec-list">${rows}</ul>`;
+    }
+
     loadAndRender("data/equipment.json", "equipment-list", (item) => `
       <article class="card">
         ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
         <h3>${item.name}</h3>
-        <p class="card-meta">${[item.type, item.brand].filter(Boolean).join(" · ")}</p>
+        <p class="card-meta">${[item.brand, item.type].filter(Boolean).join(" · ")}</p>
+        ${item.price ? `<p class="card-meta">Price: ${item.price}</p>` : ""}
+        ${item.purchasedAt ? `<p class="card-meta">Purchased at: ${item.purchasedAt}</p>` : ""}
         ${item.dateAcquired ? `<p class="card-meta">Acquired: ${item.dateAcquired}</p>` : ""}
+        ${renderSpecs(item.specs)}
         ${item.notes ? `<p>${item.notes}</p>` : ""}
       </article>
     `);

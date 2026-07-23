@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "name": "The Bambino",
+    "brand": "Breville",
+    "type": "Espresso Machine",
+    "price": "CAD$499 (2026)",
+    "image": "images/equipment/breville-the-bambino.png",
+    "specs": {
+      "Portafilter": "54mm",
+      "Typical dose": "17g (double basket)",
+      "Extraction pressure": "9 bar (with low pressure pre-infusion)",
+      "Extraction temperature": "93°C / 200°F"
+    }
+  },
+  {
+    "name": "The Smart Grinder Pro",
+    "brand": "Breville",
+    "type": "Grinder",
+    "price": "CAD$299 (2026)",
+    "image": "images/equipment/breville-smart-grinder-pro.avif"
+  },
+  {
+    "name": "V60-02",
+    "brand": "Hario",
+    "type": "Dripper",
+    "price": "CAD$18 (2026)",
+    "image": "images/equipment/hario-v60-02.webp",
+    "specs": {
+      "Capacity": "480ml",
+      "Typical use": "250ml cup of coffee"
+    }
+  },
+  {
+    "name": "Picardie",
+    "brand": "Duralex",
+    "type": "Espresso & Cortado Cup",
+    "price": "CAD$16 (set of 4, 2026)",
+    "purchasedAt": "Simons",
+    "image": "images/equipment/duralex-picardie.png",
+    "specs": {
+      "Capacity": "250ml (8 oz)",
+      "Dimensions": "3.25\" (8 cm) diameter x 3.5\" (9 cm) tall"
+    }
+  },
+  {
+    "name": "Everyday Tableware Teacup",
+    "brand": "Muji",
+    "type": "Latte & Cappuccino Cup",
+    "price": "CAD$6.90 (2026)",
+    "image": "images/equipment/muji-teacup.webp",
+    "specs": {
+      "Color": "White",
+      "Capacity": "250ml (approx. 8.5 fl oz)",
+      "Dimensions": "Dia. 10.2 x H5.7 cm (approx. Dia. 4.0\" x H2.2\")"
+    }
+  }
+]

@@ -1,4 +1,5 @@
-// Marks the nav link matching the current page as active.
+// Marks the nav link matching the current page as active, and wires up the
+// mobile hamburger toggle to expand/collapse the nav.
 document.addEventListener("DOMContentLoaded", () => {
   const path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll("nav.site-nav a").forEach((link) => {
@@ -6,6 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.add("active");
     }
   });
+
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("nav.site-nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const isOpen = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
 });
 
 // Fetches a JSON data file and renders each item into a container using templateFn.

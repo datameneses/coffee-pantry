@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "name": "James Hoffmann",
+    "image": "images/references/james-hoffmann.jpg",
+    "platform": "YouTube",
+    "link": "https://www.youtube.com/@jameshoffmann",
+    "books": [
+      { "title": "The World Atlas of Coffee", "url": "https://www.jameshoffmann.co.uk/atlas" },
+      { "title": "How to Make the Best Coffee at Home", "url": "https://www.hachette.co.uk/titles/james-hoffmann/how-to-make-the-best-coffee-at-home/9781784727246/" }
+    ],
+    "why": "James Hoffmann is the main reference behind this website and behind my own coffee learning overall. His channel covers everything from how-tos and gear reviews to deep dives on coffee science, and he's a former World Barista Champion and the founder of Square Mile Coffee Roasters. Well worth checking out both his YouTube channel and his two books."
+  }
+]

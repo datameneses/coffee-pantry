@@ -1,1 +1,219 @@
-[]
+[
+  {
+    "name": "Drip",
+    "ratio": "60g coffee per 1L water (15g coffee per 250ml water)",
+    "steps": [
+      {
+        "label": "grind size",
+        "detail": "Grind finer than a typical V60 grind (finer for light roasts, coarser for dark roasts)."
+      },
+      {
+        "label": "preheat",
+        "detail": "Preheat the V60 and rinse the filter with hot tap water."
+      },
+      {
+        "label": "add coffee",
+        "detail": "Add the coffee and dig a small well in the middle of the bed."
+      },
+      {
+        "label": "water temperature",
+        "detail": "Heat the brewing water to 100°C."
+      },
+      {
+        "label": "pour",
+        "detail": "Start the timer and the scale together, then pour in 5 stages of 20% each (5 x 50ml)."
+      }
+    ],
+    "pourSchedule": [
+      {
+        "time": "0:00–0:10",
+        "action": "Pour 50ml"
+      },
+      {
+        "time": "0:10–0:15",
+        "action": "Swirl to incorporate"
+      },
+      {
+        "time": "0:15–0:45",
+        "action": "Pause 30s (bloom)"
+      },
+      {
+        "time": "0:45–1:00",
+        "action": "Pour 50ml (total 100ml)"
+      },
+      {
+        "time": "1:00–1:10",
+        "action": "Pause 10s"
+      },
+      {
+        "time": "1:10–1:20",
+        "action": "Pour 50ml (total 150ml)"
+      },
+      {
+        "time": "1:20–1:30",
+        "action": "Pause 10s"
+      },
+      {
+        "time": "1:30–1:40",
+        "action": "Pour 50ml (total 200ml)"
+      },
+      {
+        "time": "1:40–1:50",
+        "action": "Pause 10s"
+      },
+      {
+        "time": "1:50–2:00",
+        "action": "Pour 50ml (total 250ml)"
+      },
+      {
+        "time": "2:00–2:05",
+        "action": "Gentle swirl"
+      },
+      {
+        "time": "2:05–3:00",
+        "action": "Coffee finishes draining"
+      }
+    ],
+    "tips": [
+      "Pour in a circular motion.",
+      "Keep the kettle spout close to the coffee bed.",
+      "Don't agitate the bed too much.",
+      "A total brew time of 2 to 3 minutes is normal.",
+      "Don't obsess over hitting the exact numbers."
+    ],
+    "troubleshooting": [
+      "If too slow (over-extraction): the grind might be too fine or swirled too hard, which clogged the filter paper.",
+      "If too fast (under-extraction): the grind might be too coarse."
+    ],
+    "cleanup": "Clean the V60 with water and detergent."
+  },
+  {
+    "name": "Espresso",
+    "steps": [
+      {
+        "label": "heat up",
+        "detail": "Turn on the Bambino and wait for it to heat up."
+      },
+      {
+        "label": "weigh coffee",
+        "detail": "Weigh out 17g of coffee beans and put them in the grinder."
+      },
+      {
+        "label": "grind",
+        "detail": "Attach the portafilter to the grinder using the portafilter ring, then run the grinder at the estimated setting for that coffee (usually somewhere between 16 and 22)."
+      },
+      {
+        "label": "puck prep",
+        "detail": "Remove the portafilter from the grinder. Use a WDT tool to stir the grounds and break up any lumps, tap the portafilter gently to level the grounds, then press with the tamper."
+      },
+      {
+        "label": "pull the shot",
+        "detail": "Lock the portafilter into the machine and place the zeroed scale with the cup underneath. Press the double shot button on the Bambino and the timer button on the scale at the same time. Stop the shot by pressing the double shot button again once it reaches the target weight (ideally between 2x and 3x the dry coffee weight within 25 to 30 seconds). Espresso is ready."
+      }
+    ],
+    "ratios": [
+      {
+        "style": "Ristretto",
+        "ratio": "1:1 to 1:2",
+        "example": "17g to 34g out"
+      },
+      {
+        "style": "Normale",
+        "ratio": "1:2 to 1:3",
+        "example": "34g to 51g out"
+      },
+      {
+        "style": "Lungo",
+        "ratio": "1:3 to 1:5",
+        "example": "51g to 85g out"
+      }
+    ],
+    "troubleshooting": [
+      "If too slow (over-extraction): the grind might be too fine, resulting in a bitter taste.",
+      "If too fast (under-extraction): the grind might be too coarse, resulting in a sour taste."
+    ],
+    "cleanup": "Remove the portafilter, discard the puck, clean the portafilter with water and a suitable detergent, run a single shot through the machine to flush, and empty the drip tray (careful, it's hot)."
+  },
+  {
+    "name": "Milk Drinks",
+    "steps": [
+      {
+        "label": "make an espresso",
+        "detail": "Pull a shot of espresso into the cup you'll serve the drink in."
+      },
+      {
+        "label": "pour milk",
+        "detail": "Pour milk into the jug (about 100ml, though this will change for a flat white, latte, cappuccino, or cortado)."
+      },
+      {
+        "label": "position the wand",
+        "detail": "Insert the steam wand tip just below the surface of the milk and tilt the jug to 45 degrees."
+      },
+      {
+        "label": "start steaming",
+        "detail": "Turn on the Bambino's steam button."
+      },
+      {
+        "label": "stretch the foam",
+        "detail": "Keep the wand tip near the surface to create foam while the milk spins. Do this for about 5 to 10 seconds to \"stretch\" the foam (the exact time depends on how much foam you want in your drink)."
+      },
+      {
+        "label": "incorporate the foam",
+        "detail": "Submerge the wand tip a bit deeper into the milk while it keeps spinning, so the foam incorporates into the milk."
+      },
+      {
+        "label": "check temperature",
+        "detail": "Keep steaming until the jug feels very hot to the touch. Up to 55°C makes latte art easier. 65°C is the upper limit."
+      },
+      {
+        "label": "tap and swirl",
+        "detail": "Tap the jug on the counter and swirl it to smooth out the milk texture."
+      },
+      {
+        "label": "base pour",
+        "detail": "Pour the milk into the espresso from a bit higher up to create the \"brown canvas\" (fill to about 30 to 40%)."
+      },
+      {
+        "label": "pour the art",
+        "detail": "Bring the spout closer to the cup and let the foamed milk flow out toward the front while moving your wrist very slowly."
+      },
+      {
+        "label": "finish",
+        "detail": "Finish by moving the jug quickly forward to complete the pattern."
+      }
+    ],
+    "drinkGuide": [
+      {
+        "drink": "Latte",
+        "ratio": "1:4 to 1:6",
+        "milkAt40ml": "160–240ml",
+        "foam": "Minimal, just enough for thin latte art"
+      },
+      {
+        "drink": "Cappuccino",
+        "ratio": "1:3 to 1:5",
+        "milkAt40ml": "120–200ml",
+        "foam": "Thick microfoam (about 1 to 1.5cm)"
+      },
+      {
+        "drink": "Flat White",
+        "ratio": "1:2 to 1:3",
+        "milkAt40ml": "80–120ml",
+        "foam": "Very thin (about 0.5cm) velvety microfoam"
+      },
+      {
+        "drink": "Cortado",
+        "ratio": "1:1",
+        "milkAt40ml": "40ml",
+        "foam": "Almost none, just a thin glossy layer"
+      },
+      {
+        "drink": "Macchiato",
+        "ratio": "A dash",
+        "milkAt40ml": "No set ratio",
+        "foam": "A small dash layered on top of the espresso"
+      }
+    ],
+    "cleanup": "Wipe the steam wand with a wet cloth, purge it to clean (press steam, let it release, press again), and wash the milk jug."
+  }
+]
