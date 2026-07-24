@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Methods · Coffee Pantry</title>
+  <title>Recipes · Coffee Pantry</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
@@ -13,42 +13,39 @@
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html">Home</a>
+      <a href="index.html">Beans</a>
+      <a href="recipes.html">Recipes</a>
       <a href="equipment.html">Equipment</a>
-      <a href="methods.html">Methods</a>
-      <a href="beans.html">Beans</a>
-      <a href="wishlist.html">Wishlist</a>
       <a href="cafes.html">Cafes</a>
       <a href="social.html">Social</a>
       <a href="references.html">References</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
   <main>
-    <h1>Methods</h1>
-    <p class="page-intro">Brewing methods tried at home.</p>
+    <h1>Recipes</h1>
+    <p class="page-intro">Brewing recipes tried at home.</p>
 
     <div class="toolbar">
       <div class="toolbar-group">
-        <span class="toolbar-label">Filter:</span>
-        <select id="filter-method">
-          <option value="">All methods</option>
-        </select>
+        <span class="toolbar-label">Recipes:</span>
+        <div id="recipe-buttons" class="recipe-buttons"></div>
       </div>
     </div>
 
-    <div class="card-grid method-grid" id="methods-list"></div>
+    <div class="card-grid recipe-grid" id="recipes-list"></div>
   </main>
 
   <footer class="site-footer">Coffee Pantry (a personal project, not hosted, yet).</footer>
   <script src="js/main.js"></script>
   <script>
-    function renderSteps(steps) {
+    function renderSteps(steps, startIndex = 0) {
       if (!steps || !steps.length) return "";
       const items = steps
         .map((s, i) => {
           const label = s.label.charAt(0).toUpperCase() + s.label.slice(1);
-          return `<div class="step"><strong>${i + 1}. ${label}:</strong> ${s.detail}</div>`;
+          return `<div class="step"><strong>${startIndex + i + 1}. ${label}:</strong> ${s.detail}</div>`;
         })
         .join("");
       return `<div class="step-list">${items}</div>`;
@@ -70,10 +67,22 @@
 
     function renderDrinkGuide(drinks) {
       if (!drinks || !drinks.length) return "";
-      const rows = drinks
-        .map((d) => `<tr><td>${d.drink}</td><td>${d.ratio}</td><td>${d.milkAt40ml}</td><td>${d.foam}</td></tr>`)
+      const cards = drinks
+        .map((d) => `
+          <div class="drink-card">
+            ${d.image ? `<img src="${d.image}" alt="${d.drink}"${d.compact ? ' class="drink-img-small"' : ""}>` : ""}
+            <div class="drink-info">
+              <h4>${d.drink}</h4>
+              <ul class="spec-list">
+                <li><strong>Ratio:</strong> ${d.ratio}</li>
+                <li><strong>Milk (40ml espresso):</strong> ${d.milkAt40ml}</li>
+                <li><strong>Foam:</strong> ${d.foam}</li>
+              </ul>
+            </div>
+          </div>
+        `)
         .join("");
-      return `<p class="sub-heading">Milk drinks guide</p><table class="pour-table"><thead><tr><th>Drink</th><th>Ratio (espresso:milk)</th><th>Milk (40ml espresso)</th><th>Foam</th></tr></thead><tbody>${rows}</tbody></table>`;
+      return `<div class="drink-grid">${cards}</div>`;
     }
 
     function renderSubList(title, items) {
@@ -82,57 +91,67 @@
       return `<p class="sub-heading">${title}</p><ul class="tip-list">${rows}</ul>`;
     }
 
-    function methodTemplate(item) {
+    function recipeTemplate(item) {
+      const hasDrinkGuide = item.drinkGuide && item.drinkGuide.length && item.steps && item.steps.length;
+      const stepsHtml = hasDrinkGuide
+        ? renderSteps(item.steps.slice(0, 1)) + renderDrinkGuide(item.drinkGuide) + renderSteps(item.steps.slice(1), 1)
+        : renderSteps(item.steps) + renderDrinkGuide(item.drinkGuide);
+
       return `
-        <article class="card method-card">
-          ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
-          <h3>${item.name}</h3>
+        <article class="card recipe-card">
+          <div class="recipe-title-row">
+            ${item.icon ? `<img class="recipe-icon" src="${item.icon}" alt="">` : ""}
+            <h3>${item.name}</h3>
+          </div>
           ${item.ratio ? `<p class="card-meta">Ratio: ${item.ratio}</p>` : ""}
-          ${renderSteps(item.steps)}
+          ${stepsHtml}
           ${renderPourSchedule(item.pourSchedule)}
           ${renderRatioTable(item.ratios)}
           ${renderSubList("Tips", item.tips)}
           ${renderSubList("Troubleshooting", item.troubleshooting)}
           ${item.cleanup ? `<p class="card-meta">Cleanup: ${item.cleanup}</p>` : ""}
-          ${renderDrinkGuide(item.drinkGuide)}
         </article>
       `;
     }
 
-    let methodsData = [];
-    let currentMethod = "";
+    let recipesData = [];
+    let currentRecipe = "Drip";
 
     function applyAndRender() {
-      const list = currentMethod ? methodsData.filter((m) => m.name === currentMethod) : methodsData;
-      const container = document.getElementById("methods-list");
+      const list = currentRecipe ? recipesData.filter((r) => r.name === currentRecipe) : recipesData;
+      const container = document.getElementById("recipes-list");
       container.innerHTML = list.length
-        ? list.map(methodTemplate).join("")
-        : '<p class="empty-state">No methods match this filter.</p>';
+        ? list.map(recipeTemplate).join("")
+        : '<p class="empty-state">No recipes match this selection.</p>';
     }
 
-    fetch("data/methods.json")
+    function renderButtons() {
+      const wrap = document.getElementById("recipe-buttons");
+      const recipeBtns = recipesData
+        .map((r) => `<button class="toolbar-btn${currentRecipe === r.name ? " active" : ""}" data-recipe="${r.name}" type="button">${r.name}</button>`)
+        .join("");
+      wrap.innerHTML = recipeBtns;
+      wrap.querySelectorAll(".toolbar-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          currentRecipe = btn.dataset.recipe;
+          renderButtons();
+          applyAndRender();
+        });
+      });
+    }
+
+    fetch("data/recipes.json")
       .then((res) => res.json())
       .then((data) => {
-        methodsData = data;
-        const select = document.getElementById("filter-method");
-        data.forEach((m) => {
-          const opt = document.createElement("option");
-          opt.value = m.name;
-          opt.textContent = m.name;
-          select.appendChild(opt);
-        });
+        recipesData = data;
+        renderButtons();
         applyAndRender();
       })
       .catch((err) => {
-        console.error("Failed to load data/methods.json", err);
-        document.getElementById("methods-list").innerHTML =
+        console.error("Failed to load data/recipes.json", err);
+        document.getElementById("recipes-list").innerHTML =
           '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
       });
-
-    document.getElementById("filter-method").addEventListener("change", (e) => {
-      currentMethod = e.target.value;
-      applyAndRender();
-    });
   </script>
 </body>
 </html>

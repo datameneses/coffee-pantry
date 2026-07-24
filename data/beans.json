@@ -1,6 +1,7 @@
 [
   {
     "name": "Costa Rica La Pacaya Cinnamon",
+    "rating": 4.5,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/costa-rica-la-pacaya-cinnamon",
@@ -25,6 +26,7 @@
   },
   {
     "name": "Dancing Goats",
+    "rating": 4.0,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/dancing-goats",
@@ -51,6 +53,7 @@
   },
   {
     "name": "Deadman Walking",
+    "rating": 3.8,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/deadman-walking",
@@ -77,6 +80,7 @@
   },
   {
     "name": "Gentleman",
+    "rating": 3.9,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/gentleman",
@@ -103,6 +107,7 @@
   },
   {
     "name": "Dancing Goats Decaf (Mt. Water)",
+    "rating": 4.0,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/mt-water",
@@ -129,6 +134,7 @@
   },
   {
     "name": "Ethiopia Decaf (Swiss Water)",
+    "rating": null,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/swiss-water",
@@ -154,6 +160,7 @@
   },
   {
     "name": "Catalyst Blend Decaf",
+    "rating": 3.9,
     "roaster": "Pilot Coffee Roasters",
     "roasterUrl": "https://pilotcoffeeroasters.com/",
     "productUrl": "https://pilotcoffeeroasters.com/products/catalyst-decaf-blend",
@@ -176,6 +183,7 @@
   },
   {
     "name": "Catalan Natural Guatemala",
+    "rating": 4.0,
     "roaster": "Pilot Coffee Roasters",
     "roasterUrl": "https://pilotcoffeeroasters.com/",
     "productUrl": "https://pilotcoffeeroasters.com/products/catalan-natural-guatemala",
@@ -202,17 +210,26 @@
   },
   {
     "name": "Huadquiña Espresso",
+    "rating": 3.8,
     "roaster": "Pilot Coffee Roasters",
     "roasterUrl": "https://pilotcoffeeroasters.com/",
     "productUrl": "https://specialitycoffee.ca/products/pilot-coffee-roasters-huadquina-espresso-peru",
     "image": "images/beans/huadquina-peru.png",
-    "origin": { "country": "Peru", "region": "Santa Teresa", "producer": "Huadquiña (co-op of 300 families)" },
+    "origin": {
+      "country": "Peru",
+      "region": "Santa Teresa",
+      "producer": "Huadquiña (co-op of 300 families)"
+    },
     "varietal": "Bourbon, Typica, Catimor",
     "altitude": "1500–2200 MASL (meters above sea level)",
     "process": "Washed",
     "roast": "Dark",
     "caffeine": "Regular",
-    "tasteProfile": ["Grapefruit", "Pear", "Honeysuckle"],
+    "tasteProfile": [
+      "Grapefruit",
+      "Pear",
+      "Honeysuckle"
+    ],
     "grinderSetting": "16 (espresso)"
   }
 ]

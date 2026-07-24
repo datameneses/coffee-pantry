@@ -1,6 +1,7 @@
 [
   {
     "name": "Drip",
+    "icon": "images/drinks/drip.svg",
     "ratio": "60g coffee per 1L water (15g coffee per 250ml water)",
     "steps": [
       {
@@ -89,10 +90,11 @@
   },
   {
     "name": "Espresso",
+    "icon": "images/drinks/espresso.svg",
     "steps": [
       {
         "label": "heat up",
-        "detail": "Turn on the Bambino and wait for it to heat up."
+        "detail": "Turn on the espresso machine and wait for it to heat up."
       },
       {
         "label": "weigh coffee",
@@ -107,8 +109,16 @@
         "detail": "Remove the portafilter from the grinder. Use a WDT tool to stir the grounds and break up any lumps, tap the portafilter gently to level the grounds, then press with the tamper."
       },
       {
-        "label": "pull the shot",
-        "detail": "Lock the portafilter into the machine and place the zeroed scale with the cup underneath. Press the double shot button on the Bambino and the timer button on the scale at the same time. Stop the shot by pressing the double shot button again once it reaches the target weight (ideally between 2x and 3x the dry coffee weight within 25 to 30 seconds). Espresso is ready."
+        "label": "prep the shot",
+        "detail": "Lock the portafilter into the machine and place the zeroed scale with the cup underneath."
+      },
+      {
+        "label": "start the shot",
+        "detail": "Press the double shot button on the espresso machine and the timer button on the scale at the same time."
+      },
+      {
+        "label": "stop the shot",
+        "detail": "Stop the shot by pressing the double shot button again once it reaches the target weight (ideally between 2x and 3x the dry coffee weight within 25 to 30 seconds). Espresso is ready."
       }
     ],
     "ratios": [
@@ -138,12 +148,12 @@
     "name": "Milk Drinks",
     "steps": [
       {
-        "label": "make an espresso",
-        "detail": "Pull a shot of espresso into the cup you'll serve the drink in."
+        "label": "pull an espresso",
+        "detail": "Pull an espresso and choose your drink."
       },
       {
         "label": "pour milk",
-        "detail": "Pour milk into the jug (about 100ml, though this will change for a flat white, latte, cappuccino, or cortado)."
+        "detail": "Pour milk into the jug (based on your drink of choice)."
       },
       {
         "label": "position the wand",
@@ -151,7 +161,7 @@
       },
       {
         "label": "start steaming",
-        "detail": "Turn on the Bambino's steam button."
+        "detail": "Turn on the steam button."
       },
       {
         "label": "stretch the foam",
@@ -185,33 +195,40 @@
     "drinkGuide": [
       {
         "drink": "Latte",
+        "image": "images/drinks/latte.svg",
         "ratio": "1:4 to 1:6",
         "milkAt40ml": "160–240ml",
         "foam": "Minimal, just enough for thin latte art"
       },
       {
         "drink": "Cappuccino",
+        "image": "images/drinks/cappuccino.svg",
         "ratio": "1:3 to 1:5",
         "milkAt40ml": "120–200ml",
         "foam": "Thick microfoam (about 1 to 1.5cm)"
       },
       {
         "drink": "Flat White",
+        "image": "images/drinks/flat-white.svg",
         "ratio": "1:2 to 1:3",
         "milkAt40ml": "80–120ml",
         "foam": "Very thin (about 0.5cm) velvety microfoam"
       },
       {
         "drink": "Cortado",
+        "image": "images/drinks/cortado.svg",
         "ratio": "1:1",
         "milkAt40ml": "40ml",
-        "foam": "Almost none, just a thin glossy layer"
+        "foam": "Almost none, just a thin glossy layer",
+        "compact": true
       },
       {
         "drink": "Macchiato",
+        "image": "images/drinks/macchiato.svg",
         "ratio": "A dash",
         "milkAt40ml": "No set ratio",
-        "foam": "A small dash layered on top of the espresso"
+        "foam": "A small dash layered on top of the espresso",
+        "compact": true
       }
     ],
     "cleanup": "Wipe the steam wand with a wet cloth, purge it to clean (press steam, let it release, press again), and wash the milk jug."
