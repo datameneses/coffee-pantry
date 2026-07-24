@@ -10,5 +10,30 @@
     "location": "2389 Yonge St, Toronto",
     "lat": 43.7098404,
     "lng": -79.3988283
+  },
+  {
+    "name": "Lazy Barista",
+    "location": "157 Queens Quay E, Toronto",
+    "lat": 43.6443956,
+    "lng": -79.3669356
+  },
+  {
+    "name": "Pilot Coffee Roasters",
+    "location": "117 Ossington Ave, Toronto",
+    "lat": 43.6466325,
+    "lng": -79.4195558
+  },
+  {
+    "name": "Pilot Coffee Roasters - Union Station",
+    "location": "65 Front St W, Toronto",
+    "lat": 43.6453197,
+    "lng": -79.3804062
+  },
+  {
+    "name": "Boxcar Social Harbourfront",
+    "location": "235 Queens Quay W, Toronto",
+    "notes": "Serves Subtext Coffee.",
+    "lat": 43.6393923,
+    "lng": -79.3820257
   }
 ]
