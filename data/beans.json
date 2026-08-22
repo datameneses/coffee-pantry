@@ -1,7 +1,7 @@
 [
   {
     "name": "Costa Rica La Pacaya Cinnamon",
-    "rating": 4.5,
+    "rating": 4.3,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/costa-rica-la-pacaya-cinnamon",
@@ -18,6 +18,9 @@
     "caffeine": "Regular",
     "tasteProfile": [
       "Cinnamon Roll"
+    ],
+    "tasteProfile_pt": [
+      "Rocambole de canela"
     ],
     "rest": "10–12 days",
     "grinderSetting": "16 (espresso)",
@@ -46,6 +49,11 @@
       "Vanilla",
       "Dark cherry"
     ],
+    "tasteProfile_pt": [
+      "Chocolate ao leite",
+      "Baunilha",
+      "Cereja escura"
+    ],
     "rest": "10–12 days",
     "grinderSetting": "17 (espresso)",
     "espressoRecommendation": "20g in → 39–41g out (1:1.9–2 ratio) in 28–30s",
@@ -73,6 +81,11 @@
       "Smooth",
       "Dark chocolate"
     ],
+    "tasteProfile_pt": [
+      "Encorpado",
+      "Macio",
+      "Chocolate amargo"
+    ],
     "rest": "8–10 days",
     "grinderSetting": "23 (espresso)",
     "espressoRecommendation": "18.5g in → 47g out (1:2.5 ratio) in 23–25s",
@@ -80,7 +93,7 @@
   },
   {
     "name": "Gentleman",
-    "rating": 3.9,
+    "rating": 4,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/gentleman",
@@ -99,6 +112,11 @@
       "Rich",
       "Smooth",
       "Dark chocolate"
+    ],
+    "tasteProfile_pt": [
+      "Intenso",
+      "Macio",
+      "Chocolate amargo"
     ],
     "rest": "8–10 days",
     "grinderSetting": "23 (espresso)",
@@ -127,6 +145,11 @@
       "Vanilla custard",
       "Pumpkin taffy"
     ],
+    "tasteProfile_pt": [
+      "Toffee de chocolate",
+      "Creme de baunilha",
+      "Doce de abóbora"
+    ],
     "rest": "7–10 days",
     "grinderSetting": "17 (espresso)",
     "espressoRecommendation": "20g in → 40g out (1:2 ratio) in 25–27s",
@@ -134,7 +157,7 @@
   },
   {
     "name": "Ethiopia Decaf (Swiss Water)",
-    "rating": null,
+    "rating": 4.2,
     "roaster": "De Mello",
     "roasterUrl": "https://hellodemello.com/",
     "productUrl": "https://hellodemello.com/products/swiss-water",
@@ -153,6 +176,11 @@
       "Chestnut spread",
       "Honey",
       "Molasses"
+    ],
+    "tasteProfile_pt": [
+      "Creme de castanha",
+      "Mel",
+      "Melaço"
     ],
     "rest": "10–13 days",
     "espressoRecommendation": "20.2g in → 40g out (1:1.9 ratio) in 23–25s",
@@ -177,13 +205,18 @@
       "Brown sugar",
       "Familiar"
     ],
+    "tasteProfile_pt": [
+      "Chocolate ao leite",
+      "Açúcar mascavo",
+      "Familiar"
+    ],
     "grinderSetting": "15 (espresso)",
     "espressoRecommendation": "20g in → 42ml out (1:2 ratio) in 27s",
     "dripRecommendation": "20g coffee + 300ml water (1:15 ratio) in 3 min"
   },
   {
     "name": "Catalan Natural Guatemala",
-    "rating": 4.0,
+    "rating": 3.9,
     "roaster": "Pilot Coffee Roasters",
     "roasterUrl": "https://pilotcoffeeroasters.com/",
     "productUrl": "https://pilotcoffeeroasters.com/products/catalan-natural-guatemala",
@@ -203,10 +236,41 @@
       "Gummy bear",
       "Juicy"
     ],
+    "tasteProfile_pt": [
+      "Ponche de frutas",
+      "Ursinho de goma",
+      "Suculento"
+    ],
     "rest": "7–10 days",
     "grinderSetting": "16 (espresso)",
     "espressoRecommendation": "20g in → 49g out (1:2.4 ratio) in 25s",
     "dripRecommendation": "18g coffee + 288ml water (1:16 ratio) in 3 min 15s"
+  },
+  {
+    "name": "Easy Goer Decaf",
+    "rating": 3.5,
+    "roaster": "Dark Horse",
+    "image": "images/beans/easy-goer-decaf.jpg",
+    "origin": {
+      "country": "Colombia",
+      "region": "San Agustín, Huila",
+      "producer": "Various smallholders"
+    },
+    "varietal": "Caturra, Colombia, Castillo (field blend)",
+    "altitude": "1500–1900 MASL (meters above sea level)",
+    "process": "Naturally decaffeinated (E.A./sugarcane process), fully washed",
+    "roast": "Medium",
+    "caffeine": "Decaf",
+    "tasteProfile": [
+      "Red Grape",
+      "Salted Caramel",
+      "Almond"
+    ],
+    "tasteProfile_pt": [
+      "Uva vermelha",
+      "Caramelo salgado",
+      "Amêndoa"
+    ]
   },
   {
     "name": "Huadquiña Espresso",
@@ -229,6 +293,11 @@
       "Grapefruit",
       "Pear",
       "Honeysuckle"
+    ],
+    "tasteProfile_pt": [
+      "Toranja",
+      "Pera",
+      "Madressilva"
     ],
     "grinderSetting": "16 (espresso)"
   }

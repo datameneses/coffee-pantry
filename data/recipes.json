@@ -1,6 +1,7 @@
 [
   {
     "name": "Drip",
+    "name_pt": "Coado",
     "icon": "images/drinks/drip.svg",
     "ratio": "60g coffee per 1L water (15g coffee per 250ml water)",
     "steps": [
@@ -24,6 +25,13 @@
         "label": "pour",
         "detail": "Start the timer and the scale together, then pour in 5 stages of 20% each (5 x 50ml)."
       }
+    ],
+    "steps_pt": [
+      { "detail": "Moa mais fino que o padrão do V60 (mais fino para torras claras, mais grosso para torras escuras)." },
+      { "detail": "Pré-aqueça o V60 e enxágue o filtro com água quente da torneira." },
+      { "detail": "Adicione o café e faça uma pequena cova no centro do leito de pó." },
+      { "detail": "Aqueça a água de preparo a 100°C." },
+      { "detail": "Inicie o cronômetro e a balança juntos, depois despeje em 5 etapas de 20% cada (5 x 50ml)." }
     ],
     "pourSchedule": [
       {
@@ -82,14 +90,27 @@
       "A total brew time of 2 to 3 minutes is normal.",
       "Don't obsess over hitting the exact numbers."
     ],
+    "tips_pt": [
+      "Despeje em movimento circular.",
+      "Mantenha o bico da chaleira perto do leito de café.",
+      "Não agite demais o leito de café.",
+      "Um tempo total de preparo de 2 a 3 minutos é normal.",
+      "Não fique obcecado em bater os números exatos."
+    ],
     "troubleshooting": [
       "If too slow (over-extraction): the grind might be too fine or swirled too hard, which clogged the filter paper.",
       "If too fast (under-extraction): the grind might be too coarse."
     ],
-    "cleanup": "Clean the V60 with water and detergent."
+    "troubleshooting_pt": [
+      "Se estiver muito lento (extração excessiva): a moagem pode estar muito fina ou você girou com força demais, entupindo o papel filtro.",
+      "Se estiver muito rápido (sub-extração): a moagem pode estar muito grossa."
+    ],
+    "cleanup": "Clean the V60 with water and detergent.",
+    "cleanup_pt": "Limpe o V60 com água e detergente."
   },
   {
     "name": "Espresso",
+    "name_pt": "Espresso",
     "icon": "images/drinks/espresso.svg",
     "steps": [
       {
@@ -121,6 +142,15 @@
         "detail": "Stop the shot by pressing the double shot button again once it reaches the target weight (ideally between 2x and 3x the dry coffee weight within 25 to 30 seconds). Espresso is ready."
       }
     ],
+    "steps_pt": [
+      { "detail": "Ligue a máquina de espresso e espere ela aquecer." },
+      { "detail": "Pese 17g de grãos de café e coloque no moedor." },
+      { "detail": "Encaixe o porta-filtro no moedor usando o anel do porta-filtro, depois acione o moedor no ajuste estimado para aquele café (geralmente entre 16 e 22)." },
+      { "detail": "Remova o porta-filtro do moedor. Use uma ferramenta WDT para mexer o pó e quebrar grumos, bata levemente o porta-filtro para nivelar o pó, depois prense com o tamper." },
+      { "detail": "Trave o porta-filtro na máquina e posicione a balança zerada com a xícara embaixo." },
+      { "detail": "Pressione o botão de shot duplo na máquina de espresso e o botão do cronômetro na balança ao mesmo tempo." },
+      { "detail": "Pare o shot pressionando o botão de shot duplo novamente ao atingir o peso alvo (idealmente entre 2x e 3x o peso do café seco em 25 a 30 segundos). O espresso está pronto." }
+    ],
     "ratios": [
       {
         "style": "Ristretto",
@@ -142,10 +172,16 @@
       "If too slow (over-extraction): the grind might be too fine, resulting in a bitter taste.",
       "If too fast (under-extraction): the grind might be too coarse, resulting in a sour taste."
     ],
-    "cleanup": "Remove the portafilter, discard the puck, clean the portafilter with water and a suitable detergent, run a single shot through the machine to flush, and empty the drip tray (careful, it's hot)."
+    "troubleshooting_pt": [
+      "Se estiver muito lento (extração excessiva): a moagem pode estar muito fina, resultando em um gosto amargo.",
+      "Se estiver muito rápido (sub-extração): a moagem pode estar muito grossa, resultando em um gosto azedo."
+    ],
+    "cleanup": "Remove the portafilter, discard the puck, clean the portafilter with water and a suitable detergent, run a single shot through the machine to flush, and empty the drip tray (careful, it's hot).",
+    "cleanup_pt": "Remova o porta-filtro, descarte o disco de café, limpe o porta-filtro com água e detergente adequado, rode um shot simples na máquina para enxaguar, e esvazie a bandeja de respingos (cuidado, está quente)."
   },
   {
     "name": "Milk Drinks",
+    "name_pt": "Bebidas com Leite",
     "steps": [
       {
         "label": "pull an espresso",
@@ -192,27 +228,43 @@
         "detail": "Finish by moving the jug quickly forward to complete the pattern."
       }
     ],
+    "steps_pt": [
+      { "detail": "Tire um espresso e escolha sua bebida." },
+      { "detail": "Despeje o leite na jarra (de acordo com a bebida escolhida)." },
+      { "detail": "Insira a ponta do vaporizador logo abaixo da superfície do leite e incline a jarra a 45 graus." },
+      { "detail": "Ligue o botão de vapor." },
+      { "detail": "Mantenha a ponta do vaporizador perto da superfície para criar espuma enquanto o leite gira. Faça isso por cerca de 5 a 10 segundos para \"esticar\" a espuma (o tempo exato depende de quanta espuma você quer na bebida)." },
+      { "detail": "Submerja a ponta do vaporizador um pouco mais fundo no leite enquanto ele continua girando, para que a espuma se incorpore ao leite." },
+      { "detail": "Continue vaporizando até a jarra ficar bem quente ao toque. Até 55°C facilita a latte art. 65°C é o limite máximo." },
+      { "detail": "Bata a jarra na bancada e gire-a para suavizar a textura do leite." },
+      { "detail": "Despeje o leite no espresso de uma altura um pouco maior para criar a \"tela marrom\" (encha até cerca de 30 a 40%)." },
+      { "detail": "Aproxime o bico da xícara e deixe o leite espumado fluir em direção à frente enquanto move o pulso bem devagar." },
+      { "detail": "Finalize movendo a jarra rapidamente para frente para completar o desenho." }
+    ],
     "drinkGuide": [
       {
         "drink": "Latte",
         "image": "images/drinks/latte.svg",
         "ratio": "1:4 to 1:6",
         "milkAt40ml": "160–240ml",
-        "foam": "Minimal, just enough for thin latte art"
+        "foam": "Minimal, just enough for thin latte art",
+        "foam_pt": "Mínima, só o suficiente para uma latte art fina"
       },
       {
         "drink": "Cappuccino",
         "image": "images/drinks/cappuccino.svg",
         "ratio": "1:3 to 1:5",
         "milkAt40ml": "120–200ml",
-        "foam": "Thick microfoam (about 1 to 1.5cm)"
+        "foam": "Thick microfoam (about 1 to 1.5cm)",
+        "foam_pt": "Microespuma grossa (cerca de 1 a 1,5cm)"
       },
       {
         "drink": "Flat White",
         "image": "images/drinks/flat-white.svg",
         "ratio": "1:2 to 1:3",
         "milkAt40ml": "80–120ml",
-        "foam": "Very thin (about 0.5cm) velvety microfoam"
+        "foam": "Very thin (about 0.5cm) velvety microfoam",
+        "foam_pt": "Microespuma aveludada bem fina (cerca de 0,5cm)"
       },
       {
         "drink": "Cortado",
@@ -220,6 +272,7 @@
         "ratio": "1:1",
         "milkAt40ml": "40ml",
         "foam": "Almost none, just a thin glossy layer",
+        "foam_pt": "Quase nenhuma, só uma fina camada brilhante",
         "compact": true
       },
       {
@@ -228,9 +281,11 @@
         "ratio": "A dash",
         "milkAt40ml": "No set ratio",
         "foam": "A small dash layered on top of the espresso",
+        "foam_pt": "Um pequeno toque em camada sobre o espresso",
         "compact": true
       }
     ],
-    "cleanup": "Wipe the steam wand with a wet cloth, purge it to clean (press steam, let it release, press again), and wash the milk jug."
+    "cleanup": "Wipe the steam wand with a wet cloth, purge it to clean (press steam, let it release, press again), and wash the milk jug.",
+    "cleanup_pt": "Limpe o vaporizador com um pano úmido, purgue-o para limpar (aperte vapor, deixe liberar, aperte de novo), e lave a jarra de leite."
   }
 ]

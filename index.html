@@ -21,54 +21,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="beans">
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html">Beans</a>
-      <a href="recipes.html">Recipes</a>
-      <a href="equipment.html">Equipment</a>
-      <a href="cafes.html">Cafes</a>
-      <a href="social.html">Social</a>
-      <a href="references.html">References</a>
-      <a href="about.html">About</a>
+      <a href="index.html" data-pt="Grãos">Beans</a>
+      <a href="recipes.html" data-pt="Receitas">Recipes</a>
+      <a href="equipment.html" data-pt="Equipamento">Equipment</a>
+      <a href="about.html" data-pt="Sobre">About</a>
+      <div class="lang-toggle-group">
+        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
+        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>Beans</h1>
-    <p class="page-intro">Coffee beans tried at home.</p>
+    <h1 data-pt="Grãos">Beans</h1>
+    <p class="page-intro" data-pt="Grãos de café testados em casa.">Coffee beans tried at home.</p>
 
     <div class="dashboard" id="beans-dashboard"></div>
 
     <div class="toolbar">
       <div class="toolbar-group">
-        <span class="toolbar-label">Sort by:</span>
-        <button class="toolbar-btn" data-sort="country" type="button">Country</button>
-        <button class="toolbar-btn" data-sort="roaster" type="button">Roaster</button>
-        <button class="toolbar-btn" data-sort="roast" type="button">Roast</button>
-        <button class="toolbar-btn active" data-sort="rating" type="button">My Rating</button>
+        <span class="toolbar-label" data-pt="Ordenar por:">Sort by:</span>
+        <button class="toolbar-btn" data-sort="country" type="button" data-pt="País">Country</button>
+        <button class="toolbar-btn" data-sort="roaster" type="button" data-pt="Torrefadora">Roaster</button>
+        <button class="toolbar-btn" data-sort="roast" type="button" data-pt="Torra">Roast</button>
+        <button class="toolbar-btn active" data-sort="rating" type="button" data-pt="Minha nota">My Rating</button>
       </div>
       <div class="toolbar-group">
-        <span class="toolbar-label">Filter:</span>
-        <select id="filter-country"><option value="">All countries</option></select>
-        <select id="filter-roaster"><option value="">All roasters</option></select>
-        <select id="filter-roast"><option value="">All roasts</option></select>
+        <span class="toolbar-label" data-pt="Filtro:">Filter:</span>
+        <select id="filter-country"><option value="" data-pt="Todos os países">All countries</option></select>
+        <select id="filter-roaster"><option value="" data-pt="Todas as torrefadoras">All roasters</option></select>
+        <select id="filter-roast"><option value="" data-pt="Todas as torras">All roasts</option></select>
         <select id="filter-caffeine">
-          <option value="">All types</option>
-          <option value="Regular">Regular</option>
-          <option value="Decaf">Decaf</option>
+          <option value="" data-pt="Todos os tipos">All types</option>
+          <option value="Regular" data-pt="Com cafeína">Regular</option>
+          <option value="Decaf" data-pt="Descafeinado">Decaf</option>
         </select>
         <select id="filter-rating">
-          <option value="">All ratings</option>
-          <option value="exceptional">Exceptional (4.5+)</option>
-          <option value="great">Great (4.0–4.4)</option>
-          <option value="average">Average (3.6–3.9)</option>
-          <option value="low">Low (≤3.5)</option>
-          <option value="unrated">Not yet rated</option>
+          <option value="" data-pt="Todas as notas">All ratings</option>
+          <option value="exceptional" data-pt="Excepcional (4.5+)">Exceptional (4.5+)</option>
+          <option value="great" data-pt="Ótima (4.0–4.4)">Great (4.0–4.4)</option>
+          <option value="average" data-pt="Média (3.6–3.9)">Average (3.6–3.9)</option>
+          <option value="low" data-pt="Baixa (≤3.5)">Low (≤3.5)</option>
+          <option value="unrated" data-pt="Ainda não avaliado">Not yet rated</option>
         </select>
-        <button class="toolbar-btn" id="reset-filters" type="button">Reset</button>
+        <button class="toolbar-btn" id="reset-filters" type="button" data-pt="Redefinir">Reset</button>
       </div>
     </div>
 
@@ -76,12 +77,12 @@
 
     <hr class="section-divider">
 
-    <h2>Wishlist</h2>
-    <p class="page-intro">Beans I want to try next.</p>
+    <h2 data-pt="Lista de desejos">Wishlist</h2>
+    <p class="page-intro" data-pt="Grãos que eu quero experimentar em seguida.">Beans I want to try next.</p>
     <div class="wishlist-grid" id="wishlist-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
+  <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script>
     const ROAST_ORDER = ["Light", "Medium-Light", "Medium", "Medium-Dark", "Dark"];
@@ -140,7 +141,7 @@
           `;
         })
         .join("");
-      return `<div class="dashboard-card"><p class="dashboard-title">Beans by Roast</p><div class="vbar-chart">${cols}</div></div>`;
+      return `<div class="dashboard-card"><p class="dashboard-title">${t("Beans by Roast")}</p><div class="vbar-chart">${cols}</div></div>`;
     }
 
     function renderDonutChart(counts) {
@@ -158,14 +159,14 @@
         })
         .join(", ");
       const legend = order
-        .map((key) => `<li><span class="swatch" style="background:${colors[key]}"></span>${key} (${counts[key] || 0})</li>`)
+        .map((key) => `<li><span class="swatch" style="background:${colors[key]}"></span>${t(key)} (${counts[key] || 0})</li>`)
         .join("");
       return `
         <div class="dashboard-card">
-          <p class="dashboard-title">Beans by Type</p>
+          <p class="dashboard-title">${t("Beans by Type")}</p>
           <div class="donut-wrap">
             <div class="donut" style="background: conic-gradient(${segments})" title="Regular: ${counts.Regular || 0}, Decaf: ${counts.Decaf || 0}">
-              <div class="donut-hole"><span>${total}</span><small>beans</small></div>
+              <div class="donut-hole"><span>${total}</span><small>${t("beans")}</small></div>
             </div>
             <ul class="donut-legend">${legend}</ul>
           </div>
@@ -180,29 +181,29 @@
       const byType = countBy(data, (b) => b.caffeine);
 
       document.getElementById("beans-dashboard").innerHTML =
-        renderHBarChart("Beans by Country", byCountry) +
-        renderHBarChart("Beans by Roaster", byRoaster) +
+        renderHBarChart(t("Beans by Country"), byCountry) +
+        renderHBarChart(t("Beans by Roaster"), byRoaster) +
         renderRoastChart(byRoast) +
         renderDonutChart(byType);
     }
 
     function renderOrigin(origin) {
       if (!origin) return "";
-      const countryLine = origin.country ? `<li><strong>Country:</strong> ${origin.country}</li>` : "";
-      const regionLine = origin.region ? `<li><strong>Region:</strong> ${origin.region}</li>` : "";
-      const producerLine = origin.producer ? `<li><strong>Producer:</strong> ${origin.producer}</li>` : "";
+      const countryLine = origin.country ? `<li><strong>${t("Country")}:</strong> ${origin.country}</li>` : "";
+      const regionLine = origin.region ? `<li><strong>${t("Region")}:</strong> ${origin.region}</li>` : "";
+      const producerLine = origin.producer ? `<li><strong>${t("Producer")}:</strong> ${origin.producer}</li>` : "";
       return countryLine + regionLine + producerLine;
     }
 
     function field(label, value) {
-      return value ? `<li><strong>${label}:</strong> ${value}</li>` : "";
+      return value ? `<li><strong>${t(label)}:</strong> ${value}</li>` : "";
     }
 
     function renderRoasterLink(item) {
       const links = [];
       if (item.roasterUrl) links.push(`<a href="${item.roasterUrl}" target="_blank" rel="noopener">${item.roaster}</a>`);
       if (item.productUrl) links.push(`<a href="${item.productUrl}" target="_blank" rel="noopener">${item.name}</a>`);
-      return links.length ? `<p class="card-meta">Reference: ${links.join(" · ")}</p>` : "";
+      return links.length ? `<p class="card-meta">${t("Reference")}: ${links.join(" · ")}</p>` : "";
     }
 
     function ratingTag(rating) {
@@ -221,10 +222,10 @@
       if (typeof rating !== "number") {
         return `
           <div class="star-rating-row">
-            <div class="star-rating" aria-label="Not yet rated">
+            <div class="star-rating" aria-label="${t("Not yet rated")}">
               <span class="star-rating-track">★★★★★</span>
             </div>
-            <span class="rating-value empty-state">Not yet rated</span>
+            <span class="rating-value empty-state">${t("Not yet rated")}</span>
           </div>
         `;
       }
@@ -236,7 +237,7 @@
             <span class="star-rating-fill" style="width:${pct}%">★★★★★</span>
           </div>
           <span class="rating-value">${rating.toFixed(1)}</span>
-          <span class="rating-tag rating-tag-${ratingTag(rating).toLowerCase()}">${ratingTag(rating)}</span>
+          <span class="rating-tag rating-tag-${ratingTag(rating).toLowerCase()}">${t(ratingTag(rating))}</span>
         </div>
       `;
     }
@@ -251,7 +252,7 @@
           <div class="bean-details">
             <h3>${[item.roaster, item.name].filter(Boolean).join(" - ")}</h3>
             ${renderRating(item.rating)}
-            ${item.tasteProfile && item.tasteProfile.length ? `<p class="card-meta">${item.tasteProfile.join(" · ")}</p>` : ""}
+            ${item.tasteProfile && item.tasteProfile.length ? `<p class="card-meta">${tf(item, "tasteProfile").join(" · ")}</p>` : ""}
             <ul class="spec-list">
               ${renderOrigin(item.origin)}
               ${field("Altitude", item.altitude)}
@@ -303,7 +304,7 @@
       const container = document.getElementById("beans-list");
       container.innerHTML = list.length
         ? list.map(beanTemplate).join("")
-        : '<p class="empty-state">No beans match these filters.</p>';
+        : `<p class="empty-state">${t("No beans match these filters.")}</p>`;
     }
 
     function populateSelect(id, values) {
@@ -335,8 +336,13 @@
       .catch((err) => {
         console.error("Failed to load data/beans.json", err);
         document.getElementById("beans-list").innerHTML =
-          '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
+          `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
       });
+
+    document.addEventListener("langchange", () => {
+      renderDashboard(beansData);
+      applyAndRender();
+    });
 
     document.querySelectorAll(".toolbar-btn[data-sort]").forEach((btn) => {
       btn.addEventListener("click", () => {

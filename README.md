@@ -1,15 +1,17 @@
 # Coffee Pantry
 
-A personal archive of a home coffee hobby: equipment, brewing methods, beans tried, cafes visited, social media posts, and people worth following.
+A personal archive of a home coffee hobby: equipment, brewing recipes, beans tried, cafes visited, social media posts, and people worth following.
 
-Plain HTML/CSS/JS, no build step. Not hosted yet.
+Plain HTML/CSS/JS, no build step. Dark theme with a full-bleed, pinned photo background per page (glassmorphism cards on top) — hosted on GitHub Pages.
 
 ## Structure
 
-- `index.html`, `equipment.html`, `methods.html`, `beans.html`, `cafes.html`, `social.html`, `references.html` — one page per section
-- `css/style.css` — shared styles
+- `index.html` (Beans), `recipes.html`, `equipment.html` — one page per section
+- `about.html` — the personal story, plus Cafes, Social, and References folded in as full-width scrolling sections (each with its own pinned background photo), rather than separate nav pages
+- `css/style.css` — shared styles, including the dark/glass theme and the per-page (`body[data-page]`) and per-section (`.hero-band[data-hero]`) background photos
 - `js/main.js` — shared nav + data-rendering helpers
 - `data/*.json` — one JSON file per section; each page reads its file and renders cards
+- `images/backgrounds/` — the full-bleed hero photos, one per page/section
 - `source-material/` — PDFs/images with raw info to be transcribed into `data/*.json` (not for direct publishing, just working source)
 
 ## Viewing locally

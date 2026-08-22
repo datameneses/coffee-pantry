@@ -4,51 +4,217 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About · Coffee Pantry</title>
-  <meta name="description" content="The story behind Coffee Pantry, from pingado in Brazil to home espresso in Canada.">
+  <meta name="description" content="The story behind Coffee Pantry, cafes visited, social posts, and references worth checking out.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Coffee Pantry">
   <meta property="og:title" content="About · Coffee Pantry">
-  <meta property="og:description" content="The story behind Coffee Pantry, from pingado in Brazil to home espresso in Canada.">
+  <meta property="og:description" content="The story behind Coffee Pantry, cafes visited, social posts, and references worth checking out.">
   <meta property="og:url" content="https://datameneses.github.io/coffee-pantry/about.html">
   <meta property="og:image" content="https://datameneses.github.io/coffee-pantry/images/social-card.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="About · Coffee Pantry">
-  <meta name="twitter:description" content="The story behind Coffee Pantry, from pingado in Brazil to home espresso in Canada.">
+  <meta name="twitter:description" content="The story behind Coffee Pantry, cafes visited, social posts, and references worth checking out.">
   <meta name="twitter:image" content="https://datameneses.github.io/coffee-pantry/images/social-card.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
-<body>
+<body data-page="about">
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html">Beans</a>
-      <a href="recipes.html">Recipes</a>
-      <a href="equipment.html">Equipment</a>
-      <a href="cafes.html">Cafes</a>
-      <a href="social.html">Social</a>
-      <a href="references.html">References</a>
-      <a href="about.html">About</a>
+      <a href="index.html" data-pt="Grãos">Beans</a>
+      <a href="recipes.html" data-pt="Receitas">Recipes</a>
+      <a href="equipment.html" data-pt="Equipamento">Equipment</a>
+      <a href="about.html" data-pt="Sobre">About</a>
+      <div class="lang-toggle-group">
+        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
+        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>About</h1>
+    <h1 data-pt="Sobre">About</h1>
     <div class="about-layout">
       <img class="about-photo" src="images/about.jpg" alt="Portrait of the site author holding a latte at a cafe">
       <div class="about-text">
-        <p>I was born in Brazil, and that's where my love for coffee started. As a kid, my grandma used to serve "pão de queijo" (baked cheese bread) with "pingado" (half drip coffee, half milk). I grew up drinking coffee every day without ever really knowing what went into a good cup.</p>
-        <p>I immigrated to Canada in my mid-twenties as an international student, and one of my first jobs was a couple of months at a Tim Hortons (Canada's largest coffee chain). It's far from a specialty coffee shop, but the barista training went deep enough to spark my curiosity. I bought a Nespresso Inissia not long after and started drinking more espresso than drip. A couple of years later, once my immigration process was more established, I was able to spend a bit more and pick up a proper espresso machine and grinder from Breville.</p>
-        <p>More recently, I started watching James Hoffmann's videos on YouTube and picked up his book, The World Atlas of Coffee. Since then I've been making my own espresso and milk drinks at home, and trying at least a couple of new beans every month. This website is where I keep a personal reference for myself, and hopefully a useful one for anyone else who loves coffee too.</p>
+        <p data-pt='Eu nasci no Brasil, e foi lá que meu amor pelo café começou. Quando criança, minha avó costumava servir pão de queijo com pingado (café coado com leite). Cresci tomando café todo dia sem nunca realmente saber o que fazia uma boa xícara.'>I was born in Brazil, and that's where my love for coffee started. As a kid, my grandma used to serve "pão de queijo" (baked cheese bread) with "pingado" (half drip coffee, half milk). I grew up drinking coffee every day without ever really knowing what went into a good cup.</p>
+        <p data-pt="Imigrei para o Canadá com pouco mais de vinte anos como estudante internacional, e um dos meus primeiros empregos foi alguns meses num Tim Hortons (a maior rede de café do Canadá). Está longe de ser uma cafeteria especial, mas o treinamento de barista foi o suficiente para despertar minha curiosidade. Comprei uma Nespresso Inissia pouco depois e passei a tomar mais espresso que café coado. Alguns anos depois, com meu processo de imigração mais estabelecido, consegui gastar um pouco mais e comprar uma máquina de espresso e um moedor de verdade da Breville.">I immigrated to Canada in my mid-twenties as an international student, and one of my first jobs was a couple of months at a Tim Hortons (Canada's largest coffee chain). It's far from a specialty coffee shop, but the barista training went deep enough to spark my curiosity. I bought a Nespresso Inissia not long after and started drinking more espresso than drip. A couple of years later, once my immigration process was more established, I was able to spend a bit more and pick up a proper espresso machine and grinder from Breville.</p>
+        <p data-pt="Mais recentemente, comecei a assistir aos vídeos do James Hoffmann no YouTube e comprei o livro dele, The World Atlas of Coffee. Desde então venho fazendo meus próprios espressos e bebidas com leite em casa, e testando pelo menos alguns grãos novos por mês. Este site é onde guardo uma referência pessoal pra mim, e espero que também seja útil pra quem mais ama café.">More recently, I started watching James Hoffmann's videos on YouTube and picked up his book, The World Atlas of Coffee. Since then I've been making my own espresso and milk drinks at home, and trying at least a couple of new beans every month. This website is where I keep a personal reference for myself, and hopefully a useful one for anyone else who loves coffee too.</p>
       </div>
     </div>
+
+    <hr class="section-divider">
+
+    <h2 data-pt="Cafés">Cafes</h2>
+    <p class="page-intro" data-pt="Cafés visitados.">Cafes visited.</p>
+    <div class="cafes-map" id="cafes-map"></div>
+    <div class="card-grid" id="cafes-list"></div>
+
+    <hr class="section-divider">
+
+    <h2 data-pt="Social">Social</h2>
+    <p class="page-intro" data-pt="Posts sobre café nas redes sociais.">Coffee-related posts from social media.</p>
+    <div class="social-list" id="social-list"></div>
+
+    <hr class="section-divider">
+
+    <h2 data-pt="Referências">References</h2>
+    <p class="page-intro" data-pt="Pessoas que vale a pena conhecer.">People worth checking out.</p>
+    <div class="card-grid" id="references-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
+  <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // --- Cafes ---
+    function googleMapsUrl(item) {
+      const query = encodeURIComponent(item.location ? `${item.name}, ${item.location}` : item.name);
+      return `https://www.google.com/maps/search/?api=1&query=${query}`;
+    }
+
+    function cafeTemplate(item) {
+      return `
+        <article class="card">
+          <h3>${item.name}</h3>
+          <p class="card-meta">${item.location || ""}</p>
+          ${item.dateVisited ? `<p class="card-meta">${t("Visited")}: ${item.dateVisited}</p>` : ""}
+          ${item.rating ? `<p class="card-meta">${t("Rating")}: ${item.rating}</p>` : ""}
+          ${item.notes ? `<p>${tf(item, "notes")}</p>` : ""}
+          <p class="card-meta"><a href="${googleMapsUrl(item)}" target="_blank" rel="noopener">${t("Open in Google Maps")}</a></p>
+        </article>
+      `;
+    }
+
+    function renderMap(cafes) {
+      const mapEl = document.getElementById("cafes-map");
+      const pinned = cafes.filter((c) => typeof c.lat === "number" && typeof c.lng === "number");
+
+      if (!pinned.length) {
+        mapEl.outerHTML = `<p class="empty-state">${t("No cafes pinned yet.")}</p>`;
+        return;
+      }
+
+      const map = L.map(mapEl);
+      L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+
+      pinned.forEach((c) => {
+        L.marker([c.lat, c.lng]).addTo(map).bindPopup(
+          `<strong>${c.name}</strong><br>${c.location || ""}<br><a href="${googleMapsUrl(c)}" target="_blank" rel="noopener">Open in Google Maps</a>`
+        );
+      });
+
+      if (pinned.length === 1) {
+        map.setView([pinned[0].lat, pinned[0].lng], 15);
+      } else {
+        map.fitBounds(L.latLngBounds(pinned.map((c) => [c.lat, c.lng])), { padding: [30, 30] });
+      }
+    }
+
+    let cafesData = [];
+
+    function renderCafesList() {
+      const list = document.getElementById("cafes-list");
+      list.innerHTML = cafesData.length
+        ? cafesData.map(cafeTemplate).join("")
+        : `<p class="empty-state">${t("Nothing here yet.")}</p>`;
+    }
+
+    fetch("data/cafes.json")
+      .then((res) => res.json())
+      .then((cafes) => {
+        cafesData = cafes;
+        renderMap(cafes);
+        renderCafesList();
+      })
+      .catch((err) => {
+        console.error("Failed to load data/cafes.json", err);
+        document.getElementById("cafes-list").innerHTML =
+          `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
+      });
+
+    document.addEventListener("langchange", renderCafesList);
+
+    // --- Social ---
+    // Social embeds need the platform's embed.js to run *after* the blockquotes
+    // exist in the DOM, so this fetches + renders manually instead of using
+    // the generic loadAndRender helper, then loads each embed script afterward.
+    fetch("data/social.json")
+      .then((res) => res.json())
+      .then((items) => {
+        const container = document.getElementById("social-list");
+        if (!items.length) {
+          container.innerHTML = `<p class="empty-state">${t("Nothing here yet.")}</p>`;
+          return;
+        }
+        container.innerHTML = items
+          .map((item) => {
+            if (item.platform === "instagram") {
+              return `<blockquote class="instagram-media" data-instgrm-permalink="${item.url}"></blockquote>`;
+            }
+            if (item.platform === "tiktok") {
+              return `<blockquote class="tiktok-embed" cite="${item.url}"><section></section></blockquote>`;
+            }
+            return "";
+          })
+          .join("");
+
+        const needsInstagram = items.some((i) => i.platform === "instagram");
+        const needsTiktok = items.some((i) => i.platform === "tiktok");
+        if (needsInstagram) {
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.instagram.com/embed.js";
+          s.onload = () => {
+            // embed.js sometimes misses a post on its first automatic pass when
+            // several embeds are on the same page, so re-run processing explicitly
+            // once the script has loaded, and once more after the DOM settles.
+            if (window.instgrm) window.instgrm.Embeds.process();
+            setTimeout(() => {
+              if (window.instgrm) window.instgrm.Embeds.process();
+            }, 1000);
+          };
+          document.body.appendChild(s);
+        }
+        if (needsTiktok) {
+          const s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.tiktok.com/embed.js";
+          document.body.appendChild(s);
+        }
+      })
+      .catch((err) => {
+        console.error("Failed to load social.json", err);
+        document.getElementById("social-list").innerHTML =
+          `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
+      });
+
+    // --- References ---
+    function renderBooks(books) {
+      if (!books || !books.length) return "";
+      const links = books
+        .map((b) => `<a href="${b.url}" target="_blank" rel="noopener">${b.title}</a>`)
+        .join(" · ");
+      return `<p class="card-meta">${t("Books")}: ${links}</p>`;
+    }
+
+    loadAndRender("data/references.json", "references-list", (item) => `
+      <article class="card">
+        <h3>${item.name}</h3>
+        ${item.link ? `<p class="card-meta"><a href="${item.link}" target="_blank" rel="noopener">${item.platform || t("Link")} ${t("channel")}</a></p>` : ""}
+        ${renderBooks(item.books)}
+        ${item.why ? `<p>${tf(item, "why")}</p>` : ""}
+      </article>
+    `);
+  </script>
 </body>
 </html>

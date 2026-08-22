@@ -21,28 +21,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="recipes">
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html">Beans</a>
-      <a href="recipes.html">Recipes</a>
-      <a href="equipment.html">Equipment</a>
-      <a href="cafes.html">Cafes</a>
-      <a href="social.html">Social</a>
-      <a href="references.html">References</a>
-      <a href="about.html">About</a>
+      <a href="index.html" data-pt="Grãos">Beans</a>
+      <a href="recipes.html" data-pt="Receitas">Recipes</a>
+      <a href="equipment.html" data-pt="Equipamento">Equipment</a>
+      <a href="about.html" data-pt="Sobre">About</a>
+      <div class="lang-toggle-group">
+        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
+        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>Recipes</h1>
-    <p class="page-intro">Brewing recipes tried at home.</p>
+    <h1 data-pt="Receitas">Recipes</h1>
+    <p class="page-intro" data-pt="Receitas de preparo testadas em casa.">Brewing recipes tried at home.</p>
 
     <div class="toolbar">
       <div class="toolbar-group">
-        <span class="toolbar-label">Recipes:</span>
+        <span class="toolbar-label" data-pt="Receitas:">Recipes:</span>
         <div id="recipe-buttons" class="recipe-buttons"></div>
       </div>
     </div>
@@ -50,15 +51,17 @@
     <div class="card-grid recipe-grid" id="recipes-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
+  <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script>
-    function renderSteps(steps, startIndex = 0) {
+    function renderSteps(steps, stepsPt, startIndex = 0) {
       if (!steps || !steps.length) return "";
       const items = steps
         .map((s, i) => {
-          const label = s.label.charAt(0).toUpperCase() + s.label.slice(1);
-          return `<div class="step"><strong>${startIndex + i + 1}. ${label}:</strong> ${s.detail}</div>`;
+          const rawLabel = tLabel(s.label);
+          const label = rawLabel.charAt(0).toUpperCase() + rawLabel.slice(1);
+          const detail = stepsPt && stepsPt[i] ? tPick(s.detail, stepsPt[i].detail) : s.detail;
+          return `<div class="step"><strong>${startIndex + i + 1}. ${label}:</strong> ${detail}</div>`;
         })
         .join("");
       return `<div class="step-list">${items}</div>`;
@@ -67,7 +70,7 @@
     function renderPourSchedule(schedule) {
       if (!schedule || !schedule.length) return "";
       const rows = schedule.map((row) => `<tr><td>${row.time}</td><td>${row.action}</td></tr>`).join("");
-      return `<p class="sub-heading">Pouring</p><table class="pour-table"><tbody>${rows}</tbody></table>`;
+      return `<p class="sub-heading">${t("Pouring")}</p><table class="pour-table"><tbody>${rows}</tbody></table>`;
     }
 
     function renderRatioTable(ratios) {
@@ -75,7 +78,7 @@
       const rows = ratios
         .map((r) => `<tr><td>${r.style}</td><td>${r.ratio}</td><td>${r.example}</td></tr>`)
         .join("");
-      return `<p class="sub-heading">Espresso ratios (dry:wet dose)</p><table class="pour-table"><thead><tr><th>Style</th><th>Ratio</th><th>Example (17g dose in)</th></tr></thead><tbody>${rows}</tbody></table>`;
+      return `<p class="sub-heading">${t("Espresso ratios (dry:wet dose)")}</p><table class="pour-table"><thead><tr><th>${t("Style")}</th><th>${t("Ratio")}</th><th>${t("Example (17g dose in)")}</th></tr></thead><tbody>${rows}</tbody></table>`;
     }
 
     function renderDrinkGuide(drinks) {
@@ -87,9 +90,9 @@
             <div class="drink-info">
               <h4>${d.drink}</h4>
               <ul class="spec-list">
-                <li><strong>Ratio:</strong> ${d.ratio}</li>
-                <li><strong>Milk (40ml espresso):</strong> ${d.milkAt40ml}</li>
-                <li><strong>Foam:</strong> ${d.foam}</li>
+                <li><strong>${t("Ratio")}:</strong> ${d.ratio}</li>
+                <li><strong>${t("Milk (40ml espresso)")}:</strong> ${d.milkAt40ml}</li>
+                <li><strong>${t("Foam")}:</strong> ${tf(d, "foam")}</li>
               </ul>
             </div>
           </div>
@@ -98,31 +101,32 @@
       return `<div class="drink-grid">${cards}</div>`;
     }
 
-    function renderSubList(title, items) {
+    function renderSubList(title, items, itemsPt) {
       if (!items || !items.length) return "";
-      const rows = items.map((i) => `<li>${i}</li>`).join("");
-      return `<p class="sub-heading">${title}</p><ul class="tip-list">${rows}</ul>`;
+      const list = getLang() === "pt" && itemsPt && itemsPt.length ? itemsPt : items;
+      const rows = list.map((i) => `<li>${i}</li>`).join("");
+      return `<p class="sub-heading">${t(title)}</p><ul class="tip-list">${rows}</ul>`;
     }
 
     function recipeTemplate(item) {
       const hasDrinkGuide = item.drinkGuide && item.drinkGuide.length && item.steps && item.steps.length;
       const stepsHtml = hasDrinkGuide
-        ? renderSteps(item.steps.slice(0, 1)) + renderDrinkGuide(item.drinkGuide) + renderSteps(item.steps.slice(1), 1)
-        : renderSteps(item.steps) + renderDrinkGuide(item.drinkGuide);
+        ? renderSteps(item.steps.slice(0, 1), item.steps_pt && item.steps_pt.slice(0, 1)) + renderDrinkGuide(item.drinkGuide) + renderSteps(item.steps.slice(1), item.steps_pt && item.steps_pt.slice(1), 1)
+        : renderSteps(item.steps, item.steps_pt) + renderDrinkGuide(item.drinkGuide);
 
       return `
         <article class="card recipe-card">
           <div class="recipe-title-row">
             ${item.icon ? `<img class="recipe-icon" src="${item.icon}" alt="">` : ""}
-            <h3>${item.name}</h3>
+            <h3>${tf(item, "name")}</h3>
           </div>
-          ${item.ratio ? `<p class="card-meta">Ratio: ${item.ratio}</p>` : ""}
+          ${item.ratio ? `<p class="card-meta">${t("Ratio")}: ${item.ratio}</p>` : ""}
           ${stepsHtml}
           ${renderPourSchedule(item.pourSchedule)}
           ${renderRatioTable(item.ratios)}
-          ${renderSubList("Tips", item.tips)}
-          ${renderSubList("Troubleshooting", item.troubleshooting)}
-          ${item.cleanup ? `<p class="card-meta">Cleanup: ${item.cleanup}</p>` : ""}
+          ${renderSubList("Tips", item.tips, item.tips_pt)}
+          ${renderSubList("Troubleshooting", item.troubleshooting, item.troubleshooting_pt)}
+          ${item.cleanup ? `<p class="card-meta">${t("Cleanup")}: ${tf(item, "cleanup")}</p>` : ""}
         </article>
       `;
     }
@@ -135,13 +139,13 @@
       const container = document.getElementById("recipes-list");
       container.innerHTML = list.length
         ? list.map(recipeTemplate).join("")
-        : '<p class="empty-state">No recipes match this selection.</p>';
+        : `<p class="empty-state">${t("No recipes match this selection.")}</p>`;
     }
 
     function renderButtons() {
       const wrap = document.getElementById("recipe-buttons");
       const recipeBtns = recipesData
-        .map((r) => `<button class="toolbar-btn${currentRecipe === r.name ? " active" : ""}" data-recipe="${r.name}" type="button">${r.name}</button>`)
+        .map((r) => `<button class="toolbar-btn${currentRecipe === r.name ? " active" : ""}" data-recipe="${r.name}" type="button">${tf(r, "name")}</button>`)
         .join("");
       wrap.innerHTML = recipeBtns;
       wrap.querySelectorAll(".toolbar-btn").forEach((btn) => {
@@ -163,8 +167,13 @@
       .catch((err) => {
         console.error("Failed to load data/recipes.json", err);
         document.getElementById("recipes-list").innerHTML =
-          '<p class="empty-state">Could not load data. If you\'re viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.</p>';
+          `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
       });
+
+    document.addEventListener("langchange", () => {
+      renderButtons();
+      applyAndRender();
+    });
   </script>
 </body>
 </html>

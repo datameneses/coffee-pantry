@@ -21,28 +21,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="equipment">
   <header class="site-header">
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html">Beans</a>
-      <a href="recipes.html">Recipes</a>
-      <a href="equipment.html">Equipment</a>
-      <a href="cafes.html">Cafes</a>
-      <a href="social.html">Social</a>
-      <a href="references.html">References</a>
-      <a href="about.html">About</a>
+      <a href="index.html" data-pt="Grãos">Beans</a>
+      <a href="recipes.html" data-pt="Receitas">Recipes</a>
+      <a href="equipment.html" data-pt="Equipamento">Equipment</a>
+      <a href="about.html" data-pt="Sobre">About</a>
+      <div class="lang-toggle-group">
+        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
+        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
+      </div>
     </nav>
   </header>
 
   <main>
-    <h1>Equipment</h1>
-    <p class="page-intro">The gear in the home setup.</p>
+    <h1 data-pt="Equipamento">Equipment</h1>
+    <p class="page-intro" data-pt="O equipamento usado em casa.">The gear in the home setup.</p>
     <div class="card-grid" id="equipment-list"></div>
   </main>
 
-  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
+  <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script>
     function renderSpecs(specs) {
@@ -57,12 +58,12 @@
       <article class="card">
         ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
         <h3>${item.name}</h3>
-        <p class="card-meta">${[item.brand, item.type].filter(Boolean).join(" · ")}</p>
-        ${item.price ? `<p class="card-meta">Price: ${item.price}</p>` : ""}
-        ${item.purchasedAt ? `<p class="card-meta">Purchased at: ${item.purchasedAt}</p>` : ""}
-        ${item.dateAcquired ? `<p class="card-meta">Acquired: ${item.dateAcquired}</p>` : ""}
+        <p class="card-meta">${[item.brand, tf(item, "type")].filter(Boolean).join(" · ")}</p>
+        ${item.price ? `<p class="card-meta">${t("Price")}: ${item.price}</p>` : ""}
+        ${item.purchasedAt ? `<p class="card-meta">${t("Purchased at")}: ${item.purchasedAt}</p>` : ""}
+        ${item.dateAcquired ? `<p class="card-meta">${t("Acquired")}: ${item.dateAcquired}</p>` : ""}
         ${renderSpecs(item.specs)}
-        ${item.notes ? `<p>${item.notes}</p>` : ""}
+        ${item.notes ? `<p>${tf(item, "notes")}</p>` : ""}
       </article>
     `);
   </script>

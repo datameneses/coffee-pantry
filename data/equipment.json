@@ -3,6 +3,7 @@
     "name": "The Bambino",
     "brand": "Breville",
     "type": "Espresso Machine",
+    "type_pt": "Máquina de Espresso",
     "price": "CAD$499 (bought in 2026)",
     "image": "images/equipment/breville-the-bambino.png",
     "specs": {
@@ -16,6 +17,7 @@
     "name": "The Smart Grinder Pro",
     "brand": "Breville",
     "type": "Grinder",
+    "type_pt": "Moedor",
     "price": "CAD$299 (bought in 2026)",
     "image": "images/equipment/breville-smart-grinder-pro.avif"
   },
@@ -23,6 +25,7 @@
     "name": "V60-02",
     "brand": "Hario",
     "type": "Dripper",
+    "type_pt": "Coador",
     "price": "CAD$18 (bought in 2026)",
     "image": "images/equipment/hario-v60-02.webp",
     "specs": {
@@ -34,6 +37,7 @@
     "name": "Picardie",
     "brand": "Duralex",
     "type": "Espresso & Cortado Cup",
+    "type_pt": "Xícara de Espresso e Cortado",
     "price": "CAD$16 (set of 4, bought in 2026)",
     "purchasedAt": "Simons",
     "image": "images/equipment/duralex-picardie.png",
@@ -46,6 +50,7 @@
     "name": "Everyday Tableware Teacup",
     "brand": "Muji",
     "type": "Latte & Cappuccino Cup",
+    "type_pt": "Xícara de Latte e Cappuccino",
     "price": "CAD$6.90 (bought in 2026)",
     "image": "images/equipment/muji-teacup.webp",
     "specs": {
