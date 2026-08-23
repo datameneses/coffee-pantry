@@ -21,6 +21,7 @@
 
 html {
   background: var(--color-bg);
+  overflow-x: hidden;
 }
 
 body {
@@ -35,12 +36,11 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   line-height: 1.5;
-  overflow-x: hidden;
 }
 
-body[data-page="beans"] { --hero-image: url("../images/backgrounds/hero-equipment.jpg"); }
+body[data-page="beans"] { --hero-image: url("../images/backgrounds/hero-beans.jpg"); }
 body[data-page="recipes"] { --hero-image: url("../images/backgrounds/hero-recipes.jpg"); }
-body[data-page="equipment"] { --hero-image: url("../images/backgrounds/hero-beans.jpg"); background-position: center, center 65%; }
+body[data-page="equipment"] { --hero-image: url("../images/backgrounds/hero-equipment.jpg"); background-position: center, center 65%; }
 body[data-page="about"] { --hero-image: url("../images/backgrounds/hero-about.jpg"); }
 
 @supports (-webkit-touch-callout: none) {
