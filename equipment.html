@@ -46,7 +46,8 @@
   <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script>
-    function renderSpecs(specs) {
+    function renderSpecs(item) {
+      const specs = tf(item, "specs");
       if (!specs) return "";
       const rows = Object.entries(specs)
         .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
@@ -62,7 +63,7 @@
         ${item.price ? `<p class="card-meta">${t("Price")}: ${item.price}</p>` : ""}
         ${item.purchasedAt ? `<p class="card-meta">${t("Purchased at")}: ${item.purchasedAt}</p>` : ""}
         ${item.dateAcquired ? `<p class="card-meta">${t("Acquired")}: ${item.dateAcquired}</p>` : ""}
-        ${renderSpecs(item.specs)}
+        ${renderSpecs(item)}
         ${item.notes ? `<p>${tf(item, "notes")}</p>` : ""}
       </article>
     `);

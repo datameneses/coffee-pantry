@@ -11,6 +11,12 @@
       "Typical dose": "17g (double basket)",
       "Extraction pressure": "9 bar (with low pressure pre-infusion)",
       "Extraction temperature": "93°C / 200°F"
+    },
+    "specs_pt": {
+      "Portafiltro": "54mm",
+      "Dose típica": "17g (cesto duplo)",
+      "Pressão de extração": "9 bar (com pré-infusão de baixa pressão)",
+      "Temperatura de extração": "93°C / 200°F"
     }
   },
   {
@@ -31,6 +37,10 @@
     "specs": {
       "Capacity": "480ml",
       "Typical use": "250ml cup of coffee"
+    },
+    "specs_pt": {
+      "Capacidade": "480ml",
+      "Uso típico": "xícara de 250ml de café"
     }
   },
   {
@@ -44,6 +54,10 @@
     "specs": {
       "Capacity": "250ml (8 oz)",
       "Dimensions": "3.25\" (8 cm) diameter x 3.5\" (9 cm) tall"
+    },
+    "specs_pt": {
+      "Capacidade": "250ml (8 oz)",
+      "Dimensões": "3,25\" (8 cm) de diâmetro x 3,5\" (9 cm) de altura"
     }
   },
   {
@@ -57,6 +71,11 @@
       "Color": "White",
       "Capacity": "250ml (approx. 8.5 fl oz)",
       "Dimensions": "Dia. 10.2 x H5.7 cm (approx. Dia. 4.0\" x H2.2\")"
+    },
+    "specs_pt": {
+      "Cor": "Branco",
+      "Capacidade": "250ml (aprox. 8,5 fl oz)",
+      "Dimensões": "Diâm. 10,2 x A5,7 cm (aprox. Diâm. 4,0\" x A2,2\")"
     }
   }
 ]
