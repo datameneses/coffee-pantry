@@ -187,6 +187,32 @@
     "dripRecommendation": "20g coffee + 270ml water (1:13 ratio) at 91°C in 2 min 55s"
   },
   {
+    "name": "Indonesia Mt. Ijen",
+    "rating": 4.2,
+    "roaster": "De Mello",
+    "roasterUrl": "https://hellodemello.com/",
+    "image": "images/beans/mt-ijen.jpg",
+    "origin": {
+      "country": "Indonesia",
+      "region": "Komasti, Andungsari, East Java",
+      "producer": "Smallholder"
+    },
+    "varietal": "Bourbon",
+    "altitude": "1,100–1,500 MASL (meters above sea level)",
+    "process": "Natural",
+    "caffeine": "Regular",
+    "tasteProfile": [
+      "Strawberry",
+      "Dark cherry",
+      "Raisin"
+    ],
+    "tasteProfile_pt": [
+      "Morango",
+      "Cereja escura",
+      "Passas"
+    ]
+  },
+  {
     "name": "Catalyst Blend Decaf",
     "rating": 3.9,
     "roaster": "Pilot Coffee Roasters",
