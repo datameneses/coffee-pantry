@@ -26,50 +26,46 @@
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html" data-pt="Grãos">Beans</a>
-      <a href="recipes.html" data-pt="Receitas">Recipes</a>
-      <a href="equipment.html" data-pt="Equipamento">Equipment</a>
-      <a href="about.html" data-pt="Sobre">About</a>
-      <div class="lang-toggle-group">
-        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
-        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
-      </div>
+      <a href="index.html">Beans</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="equipment.html">Equipment</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
   <main>
-    <h1 data-pt="Grãos">Beans</h1>
-    <p class="page-intro" data-pt="Grãos de café testados em casa.">Coffee beans tried at home.</p>
+    <h1>Beans</h1>
+    <p class="page-intro">Coffee beans tried at home.</p>
 
     <div class="dashboard" id="beans-dashboard"></div>
 
     <div class="toolbar">
       <div class="toolbar-group">
-        <span class="toolbar-label" data-pt="Ordenar por:">Sort by:</span>
-        <button class="toolbar-btn" data-sort="country" type="button" data-pt="País">Country</button>
-        <button class="toolbar-btn" data-sort="roaster" type="button" data-pt="Torrefadora">Roaster</button>
-        <button class="toolbar-btn" data-sort="roast" type="button" data-pt="Torra">Roast</button>
-        <button class="toolbar-btn active" data-sort="rating" type="button" data-pt="Minha nota">My Rating</button>
+        <span class="toolbar-label">Sort by:</span>
+        <button class="toolbar-btn" data-sort="country" type="button">Country</button>
+        <button class="toolbar-btn" data-sort="roaster" type="button">Roaster</button>
+        <button class="toolbar-btn" data-sort="roast" type="button">Roast</button>
+        <button class="toolbar-btn active" data-sort="rating" type="button">My Rating</button>
       </div>
       <div class="toolbar-group">
-        <span class="toolbar-label" data-pt="Filtro:">Filter:</span>
-        <select id="filter-country"><option value="" data-pt="Todos os países">All countries</option></select>
-        <select id="filter-roaster"><option value="" data-pt="Todas as torrefadoras">All roasters</option></select>
-        <select id="filter-roast"><option value="" data-pt="Todas as torras">All roasts</option></select>
+        <span class="toolbar-label">Filter:</span>
+        <select id="filter-country"><option value="">All countries</option></select>
+        <select id="filter-roaster"><option value="">All roasters</option></select>
+        <select id="filter-roast"><option value="">All roasts</option></select>
         <select id="filter-caffeine">
-          <option value="" data-pt="Todos os tipos">All types</option>
-          <option value="Regular" data-pt="Com cafeína">Regular</option>
-          <option value="Decaf" data-pt="Descafeinado">Decaf</option>
+          <option value="">All types</option>
+          <option value="Regular">Regular</option>
+          <option value="Decaf">Decaf</option>
         </select>
         <select id="filter-rating">
-          <option value="" data-pt="Todas as notas">All ratings</option>
-          <option value="exceptional" data-pt="Excepcional (4.5+)">Exceptional (4.5+)</option>
-          <option value="great" data-pt="Ótima (4.0–4.4)">Great (4.0–4.4)</option>
-          <option value="average" data-pt="Média (3.6–3.9)">Average (3.6–3.9)</option>
-          <option value="low" data-pt="Baixa (≤3.5)">Low (≤3.5)</option>
-          <option value="unrated" data-pt="Ainda não avaliado">Not yet rated</option>
+          <option value="">All ratings</option>
+          <option value="exceptional">Exceptional (4.5+)</option>
+          <option value="great">Great (4.0–4.4)</option>
+          <option value="average">Average (3.6–3.9)</option>
+          <option value="low">Low (≤3.5)</option>
+          <option value="unrated">Not yet rated</option>
         </select>
-        <button class="toolbar-btn" id="reset-filters" type="button" data-pt="Redefinir">Reset</button>
+        <button class="toolbar-btn" id="reset-filters" type="button">Reset</button>
       </div>
     </div>
 
@@ -77,12 +73,12 @@
 
     <hr class="section-divider">
 
-    <h2 data-pt="Lista de desejos">Wishlist</h2>
-    <p class="page-intro" data-pt="Grãos que eu quero experimentar em seguida.">Beans I want to try next.</p>
+    <h2>Wishlist</h2>
+    <p class="page-intro">Beans I want to try next.</p>
     <div class="wishlist-grid" id="wishlist-list"></div>
   </main>
 
-  <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script>
     const ROAST_ORDER = ["Light", "Medium-Light", "Medium", "Medium-Dark", "Dark"];
@@ -338,11 +334,6 @@
         document.getElementById("beans-list").innerHTML =
           `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
       });
-
-    document.addEventListener("langchange", () => {
-      renderDashboard(beansData);
-      applyAndRender();
-    });
 
     document.querySelectorAll(".toolbar-btn[data-sort]").forEach((btn) => {
       btn.addEventListener("click", () => {

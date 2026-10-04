@@ -27,49 +27,45 @@
     <a class="brand" href="index.html">Coffee Pantry</a>
     <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
     <nav class="site-nav">
-      <a href="index.html" data-pt="Grãos">Beans</a>
-      <a href="recipes.html" data-pt="Receitas">Recipes</a>
-      <a href="equipment.html" data-pt="Equipamento">Equipment</a>
-      <a href="about.html" data-pt="Sobre">About</a>
-      <div class="lang-toggle-group">
-        <button class="lang-toggle active" data-lang="en" type="button">EN</button>
-        <button class="lang-toggle" data-lang="pt" type="button">PT-BR</button>
-      </div>
+      <a href="index.html">Beans</a>
+      <a href="recipes.html">Recipes</a>
+      <a href="equipment.html">Equipment</a>
+      <a href="about.html">About</a>
     </nav>
   </header>
 
   <main>
-    <h1 data-pt="Sobre">About</h1>
+    <h1>About</h1>
     <div class="about-layout">
       <img class="about-photo" src="images/about.jpg" alt="Portrait of the site author holding a latte at a cafe">
       <div class="about-text">
-        <p data-pt='Eu nasci no Brasil, e foi lá que meu amor pelo café começou. Quando criança, minha avó costumava servir pão de queijo com pingado (café coado com leite). Cresci tomando café todo dia sem nunca realmente saber o que fazia uma boa xícara.'>I was born in Brazil, and that's where my love for coffee started. As a kid, my grandma used to serve "pão de queijo" (baked cheese bread) with "pingado" (half drip coffee, half milk). I grew up drinking coffee every day without ever really knowing what went into a good cup.</p>
-        <p data-pt="Imigrei para o Canadá com pouco mais de vinte anos como estudante internacional, e um dos meus primeiros empregos foi alguns meses num Tim Hortons (a maior rede de café do Canadá). Está longe de ser uma cafeteria especial, mas o treinamento de barista foi o suficiente para despertar minha curiosidade. Comprei uma Nespresso Inissia pouco depois e passei a tomar mais espresso que café coado. Alguns anos depois, com meu processo de imigração mais estabelecido, consegui gastar um pouco mais e comprar uma máquina de espresso e um moedor de verdade da Breville.">I immigrated to Canada in my mid-twenties as an international student, and one of my first jobs was a couple of months at a Tim Hortons (Canada's largest coffee chain). It's far from a specialty coffee shop, but the barista training went deep enough to spark my curiosity. I bought a Nespresso Inissia not long after and started drinking more espresso than drip. A couple of years later, once my immigration process was more established, I was able to spend a bit more and pick up a proper espresso machine and grinder from Breville.</p>
-        <p data-pt="Mais recentemente, comecei a assistir aos vídeos do James Hoffmann no YouTube e comprei o livro dele, The World Atlas of Coffee. Desde então venho fazendo meus próprios espressos e bebidas com leite em casa, e testando pelo menos alguns grãos novos por mês. Este site é onde guardo uma referência pessoal pra mim, e espero que também seja útil pra quem mais ama café.">More recently, I started watching James Hoffmann's videos on YouTube and picked up his book, The World Atlas of Coffee. Since then I've been making my own espresso and milk drinks at home, and trying at least a couple of new beans every month. This website is where I keep a personal reference for myself, and hopefully a useful one for anyone else who loves coffee too.</p>
+        <p>I was born in Brazil, and that's where my love for coffee started. As a kid, my grandma used to serve "pão de queijo" (baked cheese bread) with "pingado" (half drip coffee, half milk). I grew up drinking coffee every day without ever really knowing what went into a good cup.</p>
+        <p>I immigrated to Canada in my mid-twenties as an international student, and one of my first jobs was a couple of months at a Tim Hortons (Canada's largest coffee chain). It's far from a specialty coffee shop, but the barista training went deep enough to spark my curiosity. I bought a Nespresso Inissia not long after and started drinking more espresso than drip. A couple of years later, once my immigration process was more established, I was able to spend a bit more and pick up a proper espresso machine and grinder from Breville.</p>
+        <p>More recently, I started watching James Hoffmann's videos on YouTube and picked up his book, The World Atlas of Coffee. Since then I've been making my own espresso and milk drinks at home, and trying at least a couple of new beans every month. This website is where I keep a personal reference for myself, and hopefully a useful one for anyone else who loves coffee too.</p>
       </div>
     </div>
 
     <hr class="section-divider">
 
-    <h2 data-pt="Cafés">Cafes</h2>
-    <p class="page-intro" data-pt="Cafés visitados.">Cafes visited.</p>
+    <h2>Cafes</h2>
+    <p class="page-intro">Cafes visited.</p>
     <div class="cafes-map" id="cafes-map"></div>
     <div class="card-grid" id="cafes-list"></div>
 
     <hr class="section-divider">
 
-    <h2 data-pt="Social">Social</h2>
-    <p class="page-intro" data-pt="Posts sobre café nas redes sociais.">Coffee-related posts from social media.</p>
+    <h2>Social</h2>
+    <p class="page-intro">Coffee-related posts from social media.</p>
     <div class="social-list" id="social-list"></div>
 
     <hr class="section-divider">
 
-    <h2 data-pt="Referências">References</h2>
-    <p class="page-intro" data-pt="Pessoas que vale a pena conhecer.">People worth checking out.</p>
+    <h2>References</h2>
+    <p class="page-intro">People worth checking out.</p>
     <div class="card-grid" id="references-list"></div>
   </main>
 
-  <footer class="site-footer" data-pt="Coffee Pantry (um projeto pessoal)">Coffee Pantry (a personal project)</footer>
+  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
   <script src="js/main.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
@@ -141,8 +137,6 @@
         document.getElementById("cafes-list").innerHTML =
           `<p class="empty-state">${t("Could not load data. If you're viewing this via file://, try running a local server (e.g. <code>python3 -m http.server</code>) instead.")}</p>`;
       });
-
-    document.addEventListener("langchange", renderCafesList);
 
     // --- Social ---
     // Social embeds need the platform's embed.js to run *after* the blockquotes
