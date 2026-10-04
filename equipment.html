@@ -2,67 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Equipment · Coffee Pantry</title>
-  <meta name="description" content="The gear in the home coffee setup: espresso machine, grinder, and brewing tools.">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Coffee Pantry">
-  <meta property="og:title" content="Equipment · Coffee Pantry">
-  <meta property="og:description" content="The gear in the home coffee setup: espresso machine, grinder, and brewing tools.">
-  <meta property="og:url" content="https://datameneses.github.io/coffee-pantry/equipment.html">
-  <meta property="og:image" content="https://datameneses.github.io/coffee-pantry/images/social-card.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Equipment · Coffee Pantry">
-  <meta name="twitter:description" content="The gear in the home coffee setup: espresso machine, grinder, and brewing tools.">
-  <meta name="twitter:image" content="https://datameneses.github.io/coffee-pantry/images/social-card.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Moved to Pantry</title>
+  <meta http-equiv="refresh" content="0; url=https://datameneses.github.io/pantry/coffee/equipment.html">
+  <link rel="canonical" href="https://datameneses.github.io/pantry/coffee/equipment.html">
+  <script>window.location.replace("https://datameneses.github.io/pantry/coffee/equipment.html");</script>
 </head>
-<body data-page="equipment">
-  <header class="site-header">
-    <a class="brand" href="index.html">Coffee Pantry</a>
-    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-    <nav class="site-nav">
-      <a href="index.html">Beans</a>
-      <a href="recipes.html">Recipes</a>
-      <a href="equipment.html">Equipment</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
-
-  <main>
-    <h1>Equipment</h1>
-    <p class="page-intro">The gear in the home setup.</p>
-    <div class="card-grid" id="equipment-list"></div>
-  </main>
-
-  <footer class="site-footer">Coffee Pantry (a personal project)</footer>
-  <script src="js/main.js"></script>
-  <script>
-    function renderSpecs(item) {
-      const specs = tf(item, "specs");
-      if (!specs) return "";
-      const rows = Object.entries(specs)
-        .map(([key, value]) => `<li><strong>${key}:</strong> ${value}</li>`)
-        .join("");
-      return `<ul class="spec-list">${rows}</ul>`;
-    }
-
-    loadAndRender("data/equipment.json", "equipment-list", (item) => `
-      <article class="card">
-        ${item.image ? `<img src="${item.image}" alt="${item.name}">` : ""}
-        <h3>${item.name}</h3>
-        <p class="card-meta">${[item.brand, tf(item, "type")].filter(Boolean).join(" · ")}</p>
-        ${item.price ? `<p class="card-meta">${t("Price")}: ${item.price}</p>` : ""}
-        ${item.purchasedAt ? `<p class="card-meta">${t("Purchased at")}: ${item.purchasedAt}</p>` : ""}
-        ${item.dateAcquired ? `<p class="card-meta">${t("Acquired")}: ${item.dateAcquired}</p>` : ""}
-        ${renderSpecs(item)}
-        ${item.notes ? `<p>${tf(item, "notes")}</p>` : ""}
-      </article>
-    `);
-  </script>
+<body>
+  <p>This page moved to <a href="https://datameneses.github.io/pantry/coffee/equipment.html">https://datameneses.github.io/pantry/coffee/equipment.html</a>.</p>
 </body>
 </html>
